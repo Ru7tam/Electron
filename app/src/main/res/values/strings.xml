@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">house_analysis</string>
+    <string name="WelcomeTo">Добро пожаловать в</string>
+    <string name="nameCompany">[название]</string>
+    <string name="companyDescription">Приложение для [описание на две-три строки]</string>
+    <string name="signUp">Зарегистрироваться</string>
+    <string name="signIn">Войти</string>
+</resources>
