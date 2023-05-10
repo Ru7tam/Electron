@@ -62,7 +62,6 @@
         app:layout_constraintTop_toBottomOf="@id/description">
     </Button>
 
-
     <Button
         android:id="@+id/buttonSignIn"
         android:layout_width="match_parent"
