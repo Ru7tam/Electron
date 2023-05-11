@@ -1,5 +1,6 @@
 package com.example.house_analysis
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivityMainBinding
@@ -11,5 +12,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        forSignIn()
+    }
+
+
+    fun forSignIn(){
+        binding.buttonSignIn.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

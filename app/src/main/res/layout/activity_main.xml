@@ -57,7 +57,6 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/buttonSignIn">
     </Button>
@@ -71,13 +70,11 @@
         android:text="@string/signIn"
         android:textStyle="bold"
         android:textColor="@color/main_color"
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.473"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         style="@style/buttonSignIn">
     </Button>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
