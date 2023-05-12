@@ -18,8 +18,9 @@
         android:paddingStart="20dp"/>
 
     <TextView
+        android:layout_marginHorizontal="10dp"
         android:id="@+id/accountLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/accountLogin"
         android:textStyle="bold"
@@ -27,57 +28,74 @@
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/backButton"
         app:layout_constraintStart_toStartOf="parent"
-        android:paddingStart="10dp"
         android:paddingTop="30dp"/>
 
     <TextView
         android:id="@+id/ifUHave"
-        android:layout_width="wrap_content"
+        android:layout_width="290dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_height="wrap_content"
         android:text="@string/ifUHaveAccount"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@id/accountLogin"
         app:layout_constraintStart_toStartOf="parent"
-        android:paddingStart="10dp"
+
         android:paddingTop="30dp"/>
 
-    <TextView
-        android:id="@+id/ifUHaveTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ifUHaveAccountTwo"
-        android:textColor="@color/black"
-        android:textSize="15sp"
+    <com.google.android.material.textfield.TextInputLayout
+        app:endIconMode="clear_text"
+        app:endIconDrawable="@drawable/clear"
+        app:boxCornerRadiusTopStart="@dimen/cornerRaduisInput"
+        app:boxCornerRadiusBottomEnd="@dimen/cornerRaduisInput"
+        app:boxCornerRadiusBottomStart="@dimen/cornerRaduisInput"
+        app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ifUHave"
         app:layout_constraintStart_toStartOf="parent"
-        android:paddingStart="10dp"/>
-
-    <EditText
         android:id="@+id/editTextMail"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ifUHaveTwo"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:hint="E-mail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:boxCornerRadiusTopStart="@dimen/cornerRaduisInput"
+        app:boxCornerRadiusBottomEnd="@dimen/cornerRaduisInput"
+        app:boxCornerRadiusBottomStart="@dimen/cornerRaduisInput"
+        app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
+        app:endIconMode="password_toggle"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextMail"
-        app:layout_constraintStart_toStartOf="parent"/>
-    
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Пароль"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="20dp"
+        android:textColor="@color/main_color"
         android:text="@string/forgotPassword"
         app:layout_constraintTop_toBottomOf="@id/editTextPassword"
         app:layout_constraintEnd_toEndOf="@+id/editTextPassword"/>
@@ -109,6 +127,7 @@
             android:text="У вас нет профиля?"
             android:textColor="@color/black"/>
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Зарегистрироваться"/>
