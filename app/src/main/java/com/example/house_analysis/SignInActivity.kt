@@ -25,8 +25,7 @@ class SignInActivity : AppCompatActivity() {
 
     fun forBackButton(){
         binding.backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 
