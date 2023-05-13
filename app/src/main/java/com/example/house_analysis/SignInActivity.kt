@@ -1,11 +1,10 @@
 package com.example.house_analysis
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
-import com.example.house_analysis.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivitySignInBinding
 import com.google.android.material.textfield.TextInputLayout
 
@@ -29,7 +28,25 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+
     fun errorOccuredInEmail(editTextMail : TextInputLayout){
+        editTextMail.editText?.doOnTextChanged { inputText, _, _, _ ->
+            // Respond to input text change
+            if (inputText != null && inputText.isNotEmpty()) {
+                if ("@" !in inputText){
+                    editTextMail.error = "Неверный формат почты"
+                }
+                else if ("@" in inputText){
+                    editTextMail.isErrorEnabled = false
+                }
+            }
+            else {
+                editTextMail.isErrorEnabled = false
+            }
+        }
+    }
+
+/*    fun errorOccuredInEmail(editTextMail : TextInputLayout){
         editTextMail.editText?.doOnTextChanged { inputText, _, _, _ ->
             // Respond to input text change
             if (inputText != null) {
@@ -43,9 +60,7 @@ class SignInActivity : AppCompatActivity() {
             else {
                 editTextMail.isErrorEnabled = false
             }
-
-
         }
-    }
+    }*/
 
 }

@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.421" />
-
+`
     <TextView
         android:id="@+id/textName"
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
 
     <TextView
         android:paddingTop="10dp"
-        android:id="@+id/description"
+        android:id="@+id/descriptionCompany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/companyDescription"
@@ -50,33 +50,34 @@
         style="@style/buttonSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
+        android:layout_marginBottom="12dp"
         android:backgroundTint="@color/main_color"
         android:padding="13dp"
         android:text="@string/signUp"
         android:textSize="15sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/buttonSignIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.566"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/buttonSignIn">
+        app:layout_constraintStart_toStartOf="parent">
+
     </Button>
 
     <Button
         android:id="@+id/buttonSignIn"
+        style="@style/buttonSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="60dp"
         android:padding="13dp"
         android:text="@string/signIn"
-        android:textStyle="bold"
         android:textColor="@color/main_color"
         android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        style="@style/buttonSignIn">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent">
+
     </Button>
 
     <ImageView
