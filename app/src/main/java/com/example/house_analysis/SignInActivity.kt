@@ -49,6 +49,9 @@ class SignInActivity : AppCompatActivity() {
 /*    fun errorOccuredInEmail(editTextMail : TextInputLayout){
         editTextMail.editText?.doOnTextChanged { inputText, _, _, _ ->
             // Respond to input text change
+            if (inputText?.isEmpty() == true){
+                editTextMail.isErrorEnabled = false
+            }
             if (inputText != null) {
                 if ("@" !in inputText){
                     editTextMail.error = "Неверный формат почты"

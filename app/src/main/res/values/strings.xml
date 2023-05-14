@@ -6,7 +6,38 @@
     <string name="signUp">Зарегистрироваться</string>
     <string name="signIn">Войти</string>
     <string name="accountLogin">Вход в личный кабинет</string>
+<!--    SIGNUP texts-->
+    <string name="accountLogup">Регистрация</string>
+    <string name="textSignup">Зарегистрируйтесь, чтобы рабочий процесс стал комфортным</string>
+    <string name="name">Имя</string>
+    <string name="lastname">Фамилия</string>
+    <string name="datebirth">Дата рождения</string>
+        <!--    GENDER-->
+    <string name="gender">Пол</string>
+    <string name="g_man">Мужской</string>
+    <string name="g_woman">Женский</string>
+
+    <string name="phone">Телефон</string>
+    <string name="errorIfCountryNotCorrect">Номер с кодом города, например +7 999 432 32 32</string>
+    <string name="confirmationWillBeSend">На почту придет ссылка для подтверждения аккаунта</string>
+    <string name="password">Пароль</string>
+    <string name="errorOccured">от 8 символов, только латинские буквы и цифры</string>
+    <string name="confirPassword">Еще раз пароль</string>
+    <string name="iHave18">Мне есть 18 лет</string>
+    <string name="acceptTopolicy">Я согласен с условиями обработки персональных данных</string>
+
+
+
     <string name="ifUHaveAccount">Войдите в личный кабинет, если у вас уже есть аккаунт</string>
 
     <string name="forgotPassword">Забыли пароль?</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

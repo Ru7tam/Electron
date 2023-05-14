@@ -30,4 +30,13 @@
         <item name="android:background">@drawable/button_sign_in</item>
     </style>
 
+    <style name="Theme.House_analysis.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.House_analysis.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.House_analysis.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

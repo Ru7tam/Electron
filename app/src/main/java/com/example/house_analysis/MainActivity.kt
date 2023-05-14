@@ -13,12 +13,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         forSignIn()
+        forSignUp()
     }
 
 
     fun forSignIn(){
         binding.buttonSignIn.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    fun forSignUp(){
+        binding.buttonSignUp.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
     }
