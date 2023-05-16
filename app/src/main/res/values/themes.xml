@@ -22,6 +22,14 @@
         <item name="android:background">@drawable/button_sign_up</item>
     </style>
 
+    <style name="disabledButtonSignUp">
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@drawable/disabled_signup_btn</item>
+    </style>
+
     <style name="buttonSignIn">
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginTop">10dp</item>

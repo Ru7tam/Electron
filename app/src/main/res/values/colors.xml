@@ -13,4 +13,6 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="backgrounInputError">#33EE5D4F</color>
     <color name="outlineInputError">#EE5D4F</color>
+    <color name="grey">#999999</color>
+    <color name="green">#4cbb17</color>
 </resources>

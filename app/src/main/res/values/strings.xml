@@ -14,21 +14,26 @@
     <string name="datebirth">Дата рождения</string>
         <!--    GENDER-->
     <string name="gender">Пол</string>
-    <string name="g_man">Мужской</string>
-    <string name="g_woman">Женский</string>
+    <string-array name="genders">
+        <item>Мужской</item>
+        <item>Женский</item>
+    </string-array>
+<!--    <string name="g_man">Мужской</string>-->
+<!--    <string name="g_woman">Женский</string>-->
 
     <string name="phone">Телефон</string>
     <string name="errorIfCountryNotCorrect">Номер с кодом города, например +7 999 432 32 32</string>
+    <string name="email">E-mail</string>
     <string name="confirmationWillBeSend">На почту придет ссылка для подтверждения аккаунта</string>
     <string name="password">Пароль</string>
     <string name="errorOccured">от 8 символов, только латинские буквы и цифры</string>
     <string name="confirPassword">Еще раз пароль</string>
     <string name="iHave18">Мне есть 18 лет</string>
-    <string name="acceptTopolicy">Я согласен с условиями обработки персональных данных</string>
+    <string name="acceptTopolicy">Я согласен с <font color='#15499F'>условиями обработки персональных данных</font></string>
 
 
 
-    <string name="ifUHaveAccount">Войдите в личный кабинет, если у вас уже есть аккаунт</string>
+    <string name="ifUHaveAccount">У вас уже есть профиль?</string>
 
     <string name="forgotPassword">Забыли пароль?</string>
     <string name="title_activity_sign_up">SignUp</string>
