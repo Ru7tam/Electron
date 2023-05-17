@@ -18,7 +18,7 @@
         android:paddingStart="20dp"/>
 
     <TextView
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
         android:id="@+id/accountLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
     <TextView
         android:id="@+id/ifUHave"
         android:layout_width="290dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_height="wrap_content"
         android:text="@string/ifUHaveAccount"
         android:textColor="@color/black"
@@ -52,7 +52,7 @@
         app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
 
         android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ifUHave"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,8 +73,9 @@
         app:boxCornerRadiusBottomStart="@dimen/cornerRaduisInput"
         app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
         app:endIconMode="password_toggle"
+
         android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
         android:id="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextMail"
@@ -90,8 +91,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:layout_marginTop="10dp"
         android:id="@+id/forgotPassword"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="20dp"
@@ -132,8 +133,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Зарегистрироваться"/>
-
-
 
     </LinearLayout>
 

@@ -9,4 +9,13 @@
     <string name="ifUHaveAccount">Войдите в личный кабинет, если у вас уже есть аккаунт</string>
 
     <string name="forgotPassword">Забыли пароль?</string>
+    <string name="enterEmailText">Введите e-mail, указанный при регистрации. На почту придет код для восстановления пароля</string>
+    <string name="restorePassword">Восстановление пароля</string>
+    <string name="enterCodeText">Введите код, отправленный на e-mail</string>
+    <string name="codeText">Код</string>
+    <string name="readyText">Готово</string>
+    <string name="newPassword">Новый пароль</string>
+    <string name="enterNewPassword">Введите новый пароль</string>
+    <string name="validationForPass">от 8 символов, только латинские буквы и цифры</string>
+    <string name="changePassword">Изменить пароль</string>
 </resources>
