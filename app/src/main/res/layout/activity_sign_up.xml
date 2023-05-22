@@ -95,6 +95,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/lastname"
+                app:endIconDrawable="@drawable/clear"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/lastNameText"
@@ -184,6 +185,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/phone"
+                app:endIconDrawable="@drawable/clear"
                 app:helperText="@string/errorIfCountryNotCorrect"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
@@ -210,9 +212,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
+                app:endIconDrawable="@drawable/clear"
                 app:helperText="@string/confirmationWillBeSend"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
+
                     android:inputType="textEmailAddress"
                     android:id="@+id/emailText"
                     android:layout_width="match_parent"
@@ -251,7 +255,6 @@
                 app:boxCornerRadiusBottomEnd="@dimen/cornerRaduisInput"
                 app:boxCornerRadiusBottomStart="@dimen/cornerRaduisInput"
                 app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
-
                 app:endIconMode="password_toggle"
                 android:layout_marginTop="@dimen/marginTopForInputs"
                 android:layout_marginHorizontal="10dp"
@@ -313,9 +316,11 @@
             </LinearLayout>
 
             <Button
-                android:backgroundTint="@color/grey"
+                style="@style/buttonSignUp"
                 android:id="@+id/buttonSignUp"
-                android:layout_width="match_parent"
+                app:layout_constraintLeft_toLeftOf="@+id/confirmPassword"
+                app:layout_constraintRight_toRightOf="@+id/confirmPassword"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:padding="13dp"
