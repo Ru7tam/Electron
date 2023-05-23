@@ -15,7 +15,16 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
+            android:name=".NewPassword"
+            android:exported="false" />
+        <activity
+            android:name=".RestorePassSecond"
+            android:exported="false" />
+        <activity
             android:name=".SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RestorePass"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
