@@ -55,6 +55,7 @@ class SignUpActivity : AppCompatActivity() {
         initFields()
         passwordsValidation()
         errorOccuredInEmail()
+        fortextSignIn()
 
         validationFields(name, lastname, gender, dateBirth, phone, email, password, confirmPassword, iHave18, policy)
 
@@ -63,6 +64,13 @@ class SignUpActivity : AppCompatActivity() {
     fun onBackBtnPressed(){
         binding.backButton.setOnClickListener {
             finish()
+        }
+    }
+
+    fun fortextSignIn(){
+        binding.textSignIn.setOnClickListener{
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
         }
     }
 

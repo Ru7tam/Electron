@@ -2,6 +2,7 @@ package com.example.house_analysis
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivitySignInBinding
