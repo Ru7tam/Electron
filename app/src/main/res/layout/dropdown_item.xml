@@ -1,0 +1,9 @@
+<TextView
+    android:id="@+id/dropdown_item_tv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="SomeText"
+    android:padding="10dp"
+    android:textColor="@color/main_color"
+    android:textStyle="bold"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>
