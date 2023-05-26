@@ -7,5 +7,6 @@ class SuccessfullyRegisteredActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_successfully_registered)
+        supportActionBar?.hide()
     }
 }

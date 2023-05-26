@@ -71,6 +71,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.textSignIn.setOnClickListener{
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -86,7 +87,7 @@ class SignUpActivity : AppCompatActivity() {
 
             val datePicker = DatePickerDialog(
                 this,
-                0,
+                R.style.dialogTheme,
                 DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                     selectedYear = year
                     selectedMonth = month
@@ -103,6 +104,10 @@ class SignUpActivity : AppCompatActivity() {
 
             datePicker.show()
             datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE).text = "Choose"
+            datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.main_color))
+            datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.grey))
+            datePicker.setCancelable(false)
+
         }
 
 
@@ -214,8 +219,7 @@ class SignUpActivity : AppCompatActivity() {
         isFieldsValid = areAllFieldsValid()
 
         binding.buttonSignUp.isEnabled = isFieldsValid
-        signUpBtn.setBackgroundColor(resources.getColor(if (isFieldsValid) R.color.main_color else R.color.grey))
-        signUpBtn.setOnClickListener{ if (isFieldsValid) { startActivity(Intent(this, SignInActivity::class.java)) } else null}
+        signUpBtn.setOnClickListener{ if (isFieldsValid) { startActivity(Intent(this, SuccessfullyRegisteredActivity::class.java)) } else null}
     }
 
     private fun areAllFieldsValid(): Boolean {
