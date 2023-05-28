@@ -6,20 +6,20 @@
     <string name="signUp">Зарегистрироваться</string>
     <string name="signIn">Войти</string>
     <string name="accountLogin">Вход в личный кабинет</string>
-<!--    SIGNUP texts-->
+    <!--    SIGNUP texts-->
     <string name="accountLogup">Регистрация</string>
     <string name="textSignup">Зарегистрируйтесь, чтобы рабочий процесс стал комфортным</string>
     <string name="name">Имя</string>
     <string name="lastname">Фамилия</string>
     <string name="datebirth">Дата рождения</string>
-        <!--    GENDER-->
+    <!--    GENDER-->
     <string name="gender">Пол</string>
     <string-array name="genders">
         <item>Мужской</item>
         <item>Женский</item>
     </string-array>
-<!--    <string name="g_man">Мужской</string>-->
-<!--    <string name="g_woman">Женский</string>-->
+    <!--    <string name="g_man">Мужской</string>-->
+    <!--    <string name="g_woman">Женский</string>-->
 
     <string name="phone">Телефон</string>
     <string name="errorIfCountryNotCorrect">Номер с кодом города, например +7 999 432 32 32</string>

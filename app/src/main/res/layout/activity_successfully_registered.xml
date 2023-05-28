@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.additional.SuccessfullyRegisteredActivity">
+
+    <ImageView
+        android:id="@+id/icon_success"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/title_success"
+        android:layout_marginTop="114dp"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:src="@drawable/f_icon"/>
+
+
+    <TextView
+        android:id="@+id/title_success"
+        app:layout_constraintBottom_toTopOf="@id/description_success"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="25dp"
+        android:layout_height="wrap_content"
+        android:text="Все получилось!"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/description_success"
+        app:layout_constraintBottom_toTopOf="@id/btn_success"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:text="Осталось активировать аккаунт \nпо ссылке на почте, чтобы появился \nдоступ к профилю!"
+        android:textSize="16sp"
+        android:textColor="@color/black" />
+    <Button
+        android:id="@+id/btn_success"
+        android:layout_width="match_parent"
+        android:text="Понятно"
+        style="@style/buttonSignUp"
+        android:textSize="18sp"
+        android:inputType="textCapWords"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

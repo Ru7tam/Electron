@@ -1,11 +1,11 @@
-package com.example.house_analysis
+package com.example.house_analysis.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivitySignInBinding
+import com.example.house_analysis.ui.password.RestorePass
 import com.google.android.material.textfield.TextInputLayout
 
 class SignInActivity : AppCompatActivity() {

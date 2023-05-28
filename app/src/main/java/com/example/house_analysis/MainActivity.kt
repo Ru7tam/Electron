@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivityMainBinding
+import com.example.house_analysis.ui.SignInActivity
+import com.example.house_analysis.ui.register.SignUpActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
