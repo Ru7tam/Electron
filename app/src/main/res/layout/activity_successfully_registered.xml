@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".SuccessfullyRegisteredActivity">
+=======
+    tools:context=".ui.additional.SuccessfullyRegisteredActivity">
+>>>>>>> origin/new_azizbek
 
     <ImageView
         android:id="@+id/icon_success"
@@ -45,8 +49,13 @@
         android:textSize="18sp"
         android:inputType="textCapWords"
         android:layout_marginBottom="60dp"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent" />
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"/>
+>>>>>>> origin/new_azizbek
 
 
 

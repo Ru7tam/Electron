@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivityMainBinding
+import com.example.house_analysis.ui.SignInActivity
+import com.example.house_analysis.ui.register.SignUpActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,7 +16,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         forSignIn()
         forSignUp()
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/new_azizbek
     }
 
 
@@ -24,12 +29,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/new_azizbek
     fun forSignUp(){
         binding.buttonSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/new_azizbek
 }

@@ -1,9 +1,8 @@
-package com.example.house_analysis
+package com.example.house_analysis.ui.password
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.house_analysis.databinding.ActivityNewPasswordBinding
 import com.example.house_analysis.databinding.ActivityRestorePassSecondBinding
 
 class RestorePassSecond : AppCompatActivity() {

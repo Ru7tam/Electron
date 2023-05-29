@@ -1,4 +1,4 @@
-package com.example.house_analysis
+package com.example.house_analysis.ui.password
 
 import android.content.Intent
 import android.os.Bundle

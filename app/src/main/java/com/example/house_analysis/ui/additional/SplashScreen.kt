@@ -1,9 +1,11 @@
-package com.example.house_analysis
+package com.example.house_analysis.ui.additional
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.house_analysis.MainActivity
+import com.example.house_analysis.R
 
 class SplashScreen : AppCompatActivity() {
     private val splashTimeout: Long = 1000

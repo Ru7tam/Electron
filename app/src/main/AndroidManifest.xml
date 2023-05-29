@@ -19,20 +19,31 @@
 <!--            android:name=".SignUpActivity"-->
 <!--            android:exported="false" />-->
         <activity
-            android:name=".NewPassword"
+            android:name=".ui.additional.SuccessfullyRegisteredActivity"
             android:exported="false" />
         <activity
-            android:name=".RestorePassSecond"
+            android:name=".ui.register.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".ui.password.NewPassword"
             android:exported="false" />
         <activity
-            android:name=".RestorePass"
+            android:name=".ui.password.RestorePassSecond"
             android:exported="false" />
         <activity
+<<<<<<< HEAD
             android:name=".SignUpActivity"
             android:exported="true" >
+=======
+            android:name=".ui.SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.password.RestorePass"
+            android:exported="false" />
+        <activity
+            android:name=".ui.additional.SplashScreen"
+            android:exported="true">
+>>>>>>> origin/new_azizbek
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

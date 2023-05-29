@@ -5,7 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".SignInActivity">
+=======
+    tools:context=".ui.SignInActivity">
+>>>>>>> origin/new_azizbek
 
     <ImageView
         android:paddingBottom="@dimen/marginTopForInputs"
@@ -316,6 +320,7 @@
             </LinearLayout>
 
             <Button
+<<<<<<< HEAD
                 android:id="@+id/buttonSignUp"
                 style="@style/buttonSignUp"
                 android:layout_width="match_parent"
@@ -333,6 +338,26 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="30dp"
                 app:layout_constraintStart_toStartOf="@id/confirmPassword"
+=======
+                style="@style/buttonSignUp"
+                android:id="@+id/buttonSignUp"
+                app:layout_constraintLeft_toLeftOf="@+id/confirmPassword"
+                app:layout_constraintRight_toRightOf="@+id/confirmPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="13dp"
+                android:text="@string/signUp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/policy"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+>>>>>>> origin/new_azizbek
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/buttonSignUp"
                 android:gravity="center">
