@@ -13,10 +13,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         forSignIn()
-<<<<<<< HEAD
         forSignUp()
-=======
->>>>>>> origin/rustam
+
     }
 
 
@@ -26,13 +24,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-<<<<<<< HEAD
+
     fun forSignUp(){
         binding.buttonSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
     }
-=======
->>>>>>> origin/rustam
+
 }

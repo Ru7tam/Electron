@@ -1,16 +1,14 @@
 <resources>
     <string name="app_name">house_analysis</string>
     <string name="WelcomeTo">Добро пожаловать в</string>
-<<<<<<< HEAD
+
     <string name="nameCompany">Электрон</string>
-=======
-    <string name="nameCompany">[название]</string>
->>>>>>> origin/rustam
+
     <string name="companyDescription">Приложение для [описание на две-три строки]</string>
     <string name="signUp">Зарегистрироваться</string>
     <string name="signIn">Войти</string>
     <string name="accountLogin">Вход в личный кабинет</string>
-<<<<<<< HEAD
+
 <!--    SIGNUP texts-->
     <string name="accountLogup">Регистрация</string>
     <string name="textSignup">Зарегистрируйтесь, чтобы рабочий процесс стал комфортным</string>
@@ -36,11 +34,11 @@
     <string name="iHave18">Мне есть 18 лет</string>
     <string name="acceptTopolicy">Я согласен с <font color='#15499F'>условиями обработки персональных данных</font></string>
 
-=======
-    <string name="ifUHaveAccount">Войдите в личный кабинет, если у вас уже есть аккаунт</string>
+
+    <string name="ifUHaveAccount">У вас уже есть профиль?</string>
 
     <string name="forgotPassword">Забыли пароль?</string>
->>>>>>> origin/rustam
+
     <string name="enterEmailText">Введите e-mail, указанный при регистрации. На почту придет код для восстановления пароля</string>
     <string name="restorePassword">Восстановление пароля</string>
     <string name="enterCodeText">Введите код, отправленный на e-mail</string>
@@ -50,12 +48,7 @@
     <string name="enterNewPassword">Введите новый пароль</string>
     <string name="validationForPass">от 8 символов, только латинские буквы и цифры</string>
     <string name="changePassword">Изменить пароль</string>
-<<<<<<< HEAD
 
-
-    <string name="ifUHaveAccount">У вас уже есть профиль?</string>
-
-    <string name="forgotPassword">Забыли пароль?</string>
     <string name="title_activity_sign_up">SignUp</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -65,6 +58,4 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-=======
->>>>>>> origin/rustam
 </resources>

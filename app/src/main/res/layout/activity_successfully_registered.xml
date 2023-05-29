@@ -45,8 +45,8 @@
         android:textSize="18sp"
         android:inputType="textCapWords"
         android:layout_marginBottom="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 

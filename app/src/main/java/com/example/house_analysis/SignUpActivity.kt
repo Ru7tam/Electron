@@ -4,11 +4,13 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log.d
 import android.view.View
 import android.widget.*
 import androidx.core.widget.doOnTextChanged
 import com.example.house_analysis.databinding.ActivitySignUpBinding
 import com.google.android.material.textfield.TextInputLayout
+import com.wajahatkarim3.easyvalidation.core.view_ktx.notContains
 import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
@@ -117,14 +119,28 @@ class SignUpActivity : AppCompatActivity() {
         var password1 = binding.password
         var password2 = binding.confirmPassword
 
-        val LATIN_STRING: String = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
+        fun hasWhitespace(text: CharSequence?) : Boolean{
+            var ifWhitespace : Boolean = text.toString().any { it.isWhitespace() }
+            return ifWhitespace
+        }
+
         password1.editText?.doOnTextChanged { text, start, before, count ->
-            if (text?.length!! > 7 && text.isNotEmpty()) {
-                password1.helperText = "Пароль валидный"
+            var hasNoRussianLetter : Boolean = !text.toString().lowercase().any{ it in 'а' .. 'я'}
+            if (text?.length!! > 7 && text.isNotEmpty() && hasNoRussianLetter) {
+                if (hasWhitespace(text)){
+                    password1.error = "Без пробелов"
+                    arePasswordsEqual = false
+                }
+                else {
+                    password1.error = null
+                    password1.helperText = "Пароль валидный"
+                    arePasswordsEqual = true
+                }
+
             } else {
                 binding.password.error = resources.getString(R.string.errorOccured)
             }
-            if (text.toString() == password2.editText?.text.toString()){
+            if (text.toString() == password2.editText?.text.toString() && text.toString().isNotEmpty()){
                 arePasswordsEqual = true
                 password1.startIconDrawable =
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
@@ -141,7 +157,7 @@ class SignUpActivity : AppCompatActivity() {
 
         }
         password2.editText?.doOnTextChanged { text, start, before, count ->
-            if (text.toString() == password1.editText?.text.toString()) {
+            if (text?.length!! > 7 && text.toString() == password1.editText?.text.toString() && password1.editText?.text.toString().isNotEmpty()) {
                 arePasswordsEqual = true
                 password2.helperText = "Пароли совподают"
                 password1.helperText = null
@@ -150,6 +166,7 @@ class SignUpActivity : AppCompatActivity() {
                 password2.startIconDrawable =
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
                 password2.error = null
+
             } else {
                 arePasswordsEqual = false
                 password2.error = "Пароли не совподают"
