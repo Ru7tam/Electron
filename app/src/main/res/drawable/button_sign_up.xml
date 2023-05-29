@@ -2,6 +2,11 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
+<<<<<<< HEAD
     <solid android:color="@color/main_color"/>
     <corners android:radius="16dp"/>
+=======
+    <corners android:radius="16dp"/>
+    <solid android:color="@color/main_color"/>
+>>>>>>> origin/rustam
 </shape>

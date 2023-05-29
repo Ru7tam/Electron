@@ -14,7 +14,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+<<<<<<< HEAD
     <style name="buttonSignUp" parent="Widget.AppCompat.Button">
+=======
+    <style name="buttonSignUp">
+>>>>>>> origin/rustam
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginEnd">15dp</item>
@@ -23,10 +27,13 @@
         <item name="android:background">@drawable/button_sign_up</item>
     </style>
 
+<<<<<<< HEAD
     <style name="dialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/main_color</item>
     </style>
 
+=======
+>>>>>>> origin/rustam
     <style name="buttonSignIn">
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginTop">10dp</item>
@@ -35,6 +42,7 @@
         <item name="android:background">@drawable/button_sign_in</item>
     </style>
 
+<<<<<<< HEAD
     <style name="Theme.House_analysis.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -45,4 +53,6 @@
     <style name="Theme.House_analysis.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+=======
+>>>>>>> origin/rustam
 </resources>
