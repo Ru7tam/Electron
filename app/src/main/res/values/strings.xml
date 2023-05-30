@@ -1,45 +1,43 @@
 <resources>
     <string name="app_name">house_analysis</string>
     <string name="WelcomeTo">Добро пожаловать в</string>
-<<<<<<< HEAD
+
 
     <string name="nameCompany">Электрон</string>
 
-=======
-    <string name="nameCompany">Электрон</string>
->>>>>>> origin/new_azizbek
+
     <string name="companyDescription">Приложение для [описание на две-три строки]</string>
     <string name="signUp">Зарегистрироваться</string>
     <string name="signIn">Войти</string>
     <string name="accountLogin">Вход в личный кабинет</string>
-<<<<<<< HEAD
+
 
 <!--    SIGNUP texts-->
-=======
+
     <!--    SIGNUP texts-->
->>>>>>> origin/new_azizbek
+
     <string name="accountLogup">Регистрация</string>
     <string name="textSignup">Зарегистрируйтесь, чтобы рабочий процесс стал комфортным</string>
     <string name="name">Имя</string>
     <string name="lastname">Фамилия</string>
     <string name="datebirth">Дата рождения</string>
-<<<<<<< HEAD
+
         <!--    GENDER-->
-=======
+
     <!--    GENDER-->
->>>>>>> origin/new_azizbek
+
     <string name="gender">Пол</string>
     <string-array name="genders">
         <item>Мужской</item>
         <item>Женский</item>
     </string-array>
-<<<<<<< HEAD
+
 <!--    <string name="g_man">Мужской</string>-->
 <!--    <string name="g_woman">Женский</string>-->
-=======
+
     <!--    <string name="g_man">Мужской</string>-->
     <!--    <string name="g_woman">Женский</string>-->
->>>>>>> origin/new_azizbek
+
 
     <string name="phone">Телефон</string>
     <string name="errorIfCountryNotCorrect">Номер с кодом города, например +7 999 432 32 32</string>
@@ -50,16 +48,12 @@
     <string name="confirPassword">Еще раз пароль</string>
     <string name="iHave18">Мне есть 18 лет</string>
     <string name="acceptTopolicy">Я согласен с <font color='#15499F'>условиями обработки персональных данных</font></string>
-<<<<<<< HEAD
 
 
     <string name="ifUHaveAccount">У вас уже есть профиль?</string>
 
     <string name="forgotPassword">Забыли пароль?</string>
 
-=======
-
->>>>>>> origin/new_azizbek
     <string name="enterEmailText">Введите e-mail, указанный при регистрации. На почту придет код для восстановления пароля</string>
     <string name="restorePassword">Восстановление пароля</string>
     <string name="enterCodeText">Введите код, отправленный на e-mail</string>
@@ -70,13 +64,7 @@
     <string name="validationForPass">от 8 символов, только латинские буквы и цифры</string>
     <string name="changePassword">Изменить пароль</string>
 
-<<<<<<< HEAD
-=======
 
-    <string name="ifUHaveAccount">У вас уже есть профиль?</string>
-
-    <string name="forgotPassword">Забыли пароль?</string>
->>>>>>> origin/new_azizbek
     <string name="title_activity_sign_up">SignUp</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

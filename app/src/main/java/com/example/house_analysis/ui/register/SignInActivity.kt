@@ -1,9 +1,8 @@
-package com.example.house_analysis.ui
+package com.example.house_analysis.ui.register
 
 import android.content.Intent
 import android.os.Bundle
 
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivitySignInBinding
@@ -22,6 +21,7 @@ class SignInActivity : AppCompatActivity() {
 
         var editTextMail = binding.editTextMail
         errorOccuredInEmail(editTextMail)
+        fortextSignIn()
 
     }
 
@@ -56,4 +56,11 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    fun fortextSignIn(){
+        binding.textSignIn.setOnClickListener{
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 }
