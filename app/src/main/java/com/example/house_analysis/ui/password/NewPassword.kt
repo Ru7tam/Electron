@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivityNewPasswordBinding
@@ -14,17 +15,13 @@ import com.google.android.material.textfield.TextInputLayout
 class NewPassword : AppCompatActivity() {
     private lateinit var binding:ActivityNewPasswordBinding
     private var arePasswordsEqual: Boolean = false
-
-    private lateinit var doneBtn: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityNewPasswordBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        doneBtn = binding.done
         forBackButton()
         supportActionBar?.hide()
         passwordsValidation()
-        updateSignUpButtonState()
 
     }
 
@@ -44,6 +41,7 @@ class NewPassword : AppCompatActivity() {
         }
 
         password1.editText?.doOnTextChanged { text, start, before, count ->
+
             var hasNoRussianLetter : Boolean = !text.toString().lowercase().any{ it in 'а' .. 'я'}
 
             if (text?.length!! > 7 && text.isNotEmpty() && hasNoRussianLetter) {
@@ -65,17 +63,20 @@ class NewPassword : AppCompatActivity() {
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
                 password2.startIconDrawable =
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
+                updateSignUpButtonState()
             }
             else {
                 password1.startIconDrawable = null
                 password2.startIconDrawable = null
                 arePasswordsEqual = false
                 password2.helperText = null
+                updateSignUpButtonState()
 
             }
 
         }
         password2.editText?.doOnTextChanged { text, start, before, count ->
+
             if (text?.length!! > 7 && text.toString() == password1.editText?.text.toString() && password1.editText?.text.toString().isNotEmpty()) {
                 arePasswordsEqual = true
                 password2.helperText = "Пароли совподают"
@@ -85,20 +86,23 @@ class NewPassword : AppCompatActivity() {
                 password2.startIconDrawable =
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
                 password2.error = null
+                updateSignUpButtonState()
+
 
             } else {
                 arePasswordsEqual = false
                 password2.error = "Пароли не совподают"
                 password1.startIconDrawable = null
                 password2.startIconDrawable = null
+                updateSignUpButtonState()
             }
 
         }
+        updateSignUpButtonState()
     }
 
     private fun updateSignUpButtonState() {
-        doneBtn.isEnabled = arePasswordsEqual
-        d("MyLog", "${arePasswordsEqual}")
-        doneBtn.setOnClickListener{ if (arePasswordsEqual) { startActivity(Intent(this, SuccessfullyRegisteredActivity::class.java)) } else null}
+        binding.done.isEnabled = arePasswordsEqual
+        binding.done.setOnClickListener{ if (arePasswordsEqual) { startActivity(Intent(this, SuccessfullyRegisteredActivity::class.java)) } else null}
     }
 }

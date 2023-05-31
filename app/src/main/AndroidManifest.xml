@@ -18,9 +18,9 @@
         <activity
             android:name=".ui.register.SignUpActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".ui.password.NewPassword"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".ui.password.NewPassword"
+            android:exported="false" />
         <activity
             android:name=".ui.password.RestorePassSecond"
             android:exported="false" />
@@ -31,7 +31,7 @@
             android:name=".ui.password.RestorePass"
             android:exported="false" />
         <activity
-            android:name=".ui.password.NewPassword"
+            android:name=".ui.additional.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
