@@ -7,6 +7,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivitySignInBinding
 import com.example.house_analysis.ui.password.RestorePass
+import com.example.house_analysis.ui.profile.MainAccountActivity
 import com.google.android.material.textfield.TextInputLayout
 
 class SignInActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class SignInActivity : AppCompatActivity() {
         supportActionBar?.hide()
         forBackButton()
         forForgotPassword()
+        forButtonSignIn()
 
         var editTextMail = binding.editTextMail
         errorOccuredInEmail(editTextMail)
@@ -28,6 +30,13 @@ class SignInActivity : AppCompatActivity() {
     fun forBackButton(){
         binding.backButton.setOnClickListener {
             finish()
+        }
+    }
+
+    fun forButtonSignIn(){
+        binding.buttonSignIn.setOnClickListener {
+            val intent = Intent(this, MainAccountActivity::class.java)
+            startActivity(intent)
         }
     }
 
