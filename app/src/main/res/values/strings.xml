@@ -12,7 +12,7 @@
     <string name="accountLogin">Вход в личный кабинет</string>
 
 
-<!--    SIGNUP texts-->
+    <!--    SIGNUP texts-->
 
     <!--    SIGNUP texts-->
 
@@ -22,7 +22,7 @@
     <string name="lastname">Фамилия</string>
     <string name="datebirth">Дата рождения</string>
 
-        <!--    GENDER-->
+    <!--    GENDER-->
 
     <!--    GENDER-->
 
@@ -32,8 +32,8 @@
         <item>Женский</item>
     </string-array>
 
-<!--    <string name="g_man">Мужской</string>-->
-<!--    <string name="g_woman">Женский</string>-->
+    <!--    <string name="g_man">Мужской</string>-->
+    <!--    <string name="g_woman">Женский</string>-->
 
     <!--    <string name="g_man">Мужской</string>-->
     <!--    <string name="g_woman">Женский</string>-->

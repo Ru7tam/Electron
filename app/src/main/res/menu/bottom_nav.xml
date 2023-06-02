@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/home_main"
+        android:title="Главная"/>
+
+    <item android:id="@+id/search"
+        android:enabled="true"
+        android:titleCondensed="true"
+        android:icon="@drawable/search_main"
+        android:title="Поиск"/>
+
+    <item android:id="@+id/add"
+        android:enabled="true"
+        android:icon="@drawable/add_main"
+        android:title="Добавить"/>
+
+    <item android:id="@+id/dots"
+        android:enabled="true"
+        android:icon="@drawable/dots_main"
+        android:title="Выделить"/>
+
+</menu>
