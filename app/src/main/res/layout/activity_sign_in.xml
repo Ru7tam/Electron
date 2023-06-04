@@ -129,7 +129,8 @@
             android:text="У вас нет профиля?"
             android:textColor="@color/black"/>
         <TextView
-
+            android:id="@+id/signUpTextView"
+            android:textColor="@color/main_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Зарегистрироваться"/>

@@ -18,5 +18,6 @@
     <color name="green">#4cbb17</color>
     <color name="colorImageView">#908F8F</color>
     <color name="coloView">#B9B9BB</color>
+    <color name="cardViewColor">#EEEEEE</color>
     <color name="colorChangeImage">#14499F</color>
 </resources>

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.house_analysis.databinding.ActivitySignInBinding
 import com.example.house_analysis.ui.password.RestorePass
 import com.example.house_analysis.ui.profile.MainAccountActivity
+import com.example.house_analysis.ui.register.SignUpActivity
 import com.google.android.material.textfield.TextInputLayout
 
 class SignInActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class SignInActivity : AppCompatActivity() {
         forBackButton()
         forForgotPassword()
         forButtonSignIn()
+        forsignUpTextView()
 
         var editTextMail = binding.editTextMail
         errorOccuredInEmail(editTextMail)
@@ -41,6 +43,13 @@ class SignInActivity : AppCompatActivity() {
     fun forForgotPassword(){
         binding.forgotPassword.setOnClickListener{
             val intent = Intent(this, RestorePass::class.java)
+            startActivity(intent)
+        }
+    }
+
+    fun forsignUpTextView(){
+        binding.signUpTextView.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
     }
