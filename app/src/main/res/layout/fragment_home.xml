@@ -11,9 +11,13 @@
         android:layout_height="match_parent">
         <!-- TODO: Update blank fragment layout -->
         <TextView
+            android:layout_marginHorizontal="15dp"
+            android:textColor="@color/colorChangeImage"
+            android:textSize="22sp"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Home Fragment" />
+            android:text="Список задач" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTasks"
