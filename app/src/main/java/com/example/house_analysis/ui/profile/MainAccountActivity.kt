@@ -28,6 +28,7 @@ class MainAccountActivity : AppCompatActivity() {
         forClickProfileImageView()
 //        forDefaultFragment()
 
+        openDefaultFragment(savedInstanceState)
         bottomNavigation()
 
     }
@@ -115,6 +116,14 @@ class MainAccountActivity : AppCompatActivity() {
             .replace(R.id.relativeContainer, fragment)
             .commit()
         return true
+    }
+    fun openDefaultFragment(savedInstanceState: Bundle?){
+        if (savedInstanceState == null){
+            val defaultFrament = HomeFragment()
+            supportFragmentManager.beginTransaction()
+                .add(R.id.relativeContainer, defaultFrament)
+                .commit()
+        }
     }
 
 

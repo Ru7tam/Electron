@@ -8,19 +8,31 @@
     tools:context=".ui.profile.MainAccountActivity">
 
     <!-- Основной контент -->
+
     <RelativeLayout
         android:id="@+id/relativeContainer"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+=======
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toTopOf="@+id/navBar_m"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_m">
+
+>>>>>>> b8c66ae13b7937a8f4dd38db0c5aee790af4bb74
         <!-- Ваш основной контент здесь -->
 
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/toolbar_m"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <FrameLayout
@@ -77,6 +89,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/navBar_m"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="0dp">
@@ -84,6 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
             <View
+                android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_gravity="top"
