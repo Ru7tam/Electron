@@ -1,7 +1,12 @@
 package com.example.house_analysis.ui.profile
 
+import android.graphics.Color
 import android.graphics.PorterDuff
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -16,6 +21,7 @@ import com.example.house_analysis.ui.profile.bottom_nav.HomeFragment
 import com.example.house_analysis.ui.profile.bottom_nav.NoTasksFragment
 import com.example.house_analysis.ui.profile.bottom_nav.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class MainAccountActivity : AppCompatActivity() {
     lateinit var binding: ActivityAccountMainBinding
@@ -105,7 +111,7 @@ class MainAccountActivity : AppCompatActivity() {
                     R.id.add ->
                         openFragment(AddFragment())
                     R.id.dots ->
-                        openFragment(DotsFragment())
+                        bottomSheetDialog()
                     else -> false
                 }
             }
@@ -126,6 +132,28 @@ class MainAccountActivity : AppCompatActivity() {
                 .commit()
         }
     }
+    fun bottomSheetDialog():Boolean{
+//        val bottomSheetDialog = findViewById<LinearLayout>(R.id.bottomSheetDialog)
+//        bottomSheetDialog.setOnClickListener {
+
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(R.layout.bottomsheet)
+        val closeBtn = dialog.findViewById<Button>(R.id.cancel)
+        closeBtn?.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.window?.attributes?.width = WindowManager.LayoutParams.MATCH_PARENT // Set width to match parent
+        dialog.window?.attributes?.height = WindowManager.LayoutParams.WRAP_CONTENT // Set height to wrap content
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        dialog.show()
+
+        return true
+//        }
+    }
+
+
+
 
 
 }

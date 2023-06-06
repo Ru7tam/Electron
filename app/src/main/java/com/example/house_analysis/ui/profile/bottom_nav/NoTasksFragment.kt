@@ -52,6 +52,7 @@ class NoTasksFragment : Fragment() {
             dialog.dismiss()
         }
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
         dialog.show()
     }
 
