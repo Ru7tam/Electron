@@ -36,7 +36,7 @@
             android:name=".ui.password.RestorePassSecond"
             android:exported="false" />
         <activity
-            android:name=".ui.SignInActivity"
+            android:name=".ui.register.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".ui.password.RestorePass"

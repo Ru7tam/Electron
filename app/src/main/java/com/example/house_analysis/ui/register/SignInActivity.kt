@@ -75,7 +75,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     fun fortextSignIn(){
-        binding.textSignIn.setOnClickListener{
+        binding.signUpTextView.setOnClickListener{
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
             finish()

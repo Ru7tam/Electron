@@ -1,4 +1,4 @@
-package com.example.house_analysis.ui.profile.TopBar
+package com.example.house_analysis.ui.profile.top_nav
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

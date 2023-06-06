@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_gravity="top"
-                android:background="@color/coloView" />
+                android:background="@color/colorView" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/navBar"
