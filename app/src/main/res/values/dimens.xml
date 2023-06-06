@@ -3,4 +3,5 @@
     <dimen name="cornerRaduisInput">15dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="marginTopForInputs">10dp</dimen>
+    <dimen name="dialogCorner">40dp</dimen>
 </resources>
