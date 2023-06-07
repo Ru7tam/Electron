@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivityAccountMainBinding
 import com.example.house_analysis.ui.profile.bottom_nav.AddFragment
+import com.example.house_analysis.ui.profile.bottom_nav.BottomSheetDialogFagment
 import com.example.house_analysis.ui.profile.bottom_nav.DotsFragment
 import com.example.house_analysis.ui.profile.bottom_nav.NoTasksFragment
 import com.example.house_analysis.ui.profile.bottom_nav.SearchFragment
@@ -24,8 +25,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.example.house_analysis.ui.profile.top_nav.ProfileFragment
 import com.example.house_analysis.ui.profile.top_nav.SettingsFragment
 import com.example.house_analysis.ui.profile.top_nav.TasksFragment
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class MainAccountActivity : AppCompatActivity() {
+class MainAccountActivity : AppCompatActivity(){
     lateinit var binding: ActivityAccountMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,7 +115,7 @@ class MainAccountActivity : AppCompatActivity() {
                     R.id.add ->
                         openFragment(AddFragment())
                     R.id.dots ->
-                        openFragment(DotsFragment())
+                        bottomSheetDialog()
                     else -> false
                 }
             }
@@ -135,23 +137,12 @@ class MainAccountActivity : AppCompatActivity() {
         }
     }
     fun bottomSheetDialog():Boolean{
-//        val bottomSheetDialog = findViewById<LinearLayout>(R.id.bottomSheetDialog)
-//        bottomSheetDialog.setOnClickListener {
+        val bottomSheetFragment = BottomSheetDialogFagment()
+        bottomSheetFragment.show(supportFragmentManager, "bottom_sheet_tag")
 
-        val dialog = BottomSheetDialog(this)
-        dialog.setContentView(R.layout.bottomsheet)
-        val closeBtn = dialog.findViewById<Button>(R.id.cancel)
-        closeBtn?.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialog.window?.attributes?.width = WindowManager.LayoutParams.MATCH_PARENT // Set width to match parent
-        dialog.window?.attributes?.height = WindowManager.LayoutParams.WRAP_CONTENT // Set height to wrap content
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(false)
-        dialog.show()
 
-        return true
-//        }
+        return false
+
     }
 
 
