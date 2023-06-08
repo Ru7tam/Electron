@@ -20,9 +20,9 @@
         <activity
             android:name=".ui.profile.LanguageActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.profile.MainAccountActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ui.profile.MainAccountActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".ui.additional.SuccessfullyRegisteredActivity"
             android:exported="false" />
@@ -42,7 +42,7 @@
             android:name=".ui.password.RestorePass"
             android:exported="false" />
         <activity
-            android:name=".ui.additional.SplashScreen"
+            android:name=".ui.profile.MainAccountActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

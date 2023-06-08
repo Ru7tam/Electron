@@ -20,5 +20,6 @@
     <color name="colorView">#B9B9BB</color>
     <color name="cardViewColor">#EEEEEE</color>
     <color name="colorChangeImage">#14499F</color>
+    <color name="labelColor">#478ECC</color>
 
 </resources>
