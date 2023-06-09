@@ -6,7 +6,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="380dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:chip="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="horizontal"
@@ -65,12 +66,12 @@
                 app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
                 android:layout_marginTop="10dp"
                 app:endIconDrawable="@drawable/cancel"
-                android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Метка"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addLabelEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -92,8 +93,8 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/labels"
+                <LinearLayout
+                    android:id="@+id/listChip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -102,7 +103,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/createTask"
+            android:id="@+id/addLabelBtn"
             style="@style/buttonSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
