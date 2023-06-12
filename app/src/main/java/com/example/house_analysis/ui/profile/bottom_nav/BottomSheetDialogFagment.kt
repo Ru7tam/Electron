@@ -83,7 +83,10 @@ class BottomSheetDialogFagment: BottomSheetDialogFragment() {
         val addLabelBtn = view.findViewById<Button>(R.id.addLabelBtn)
         val addLabelEt = view.findViewById<TextInputEditText>(R.id.addLabelEt)
 
-        addLabelBtn.setOnClickListener { addChip(addLabelEt.text.toString()) }
+        addLabelBtn.setOnClickListener {
+            addChip(addLabelEt.text.toString())
+            addLabelEt.text = null
+        }
 
         // Set dialog width and height
         val window = dialog.window
@@ -101,7 +104,9 @@ class BottomSheetDialogFagment: BottomSheetDialogFragment() {
     private fun addChip(text2: String) {
         d("mytag", "$text2")
         val chip1 = Chip(requireContext())
-        chip1.text = text2
+        chip1.setChipBackgroundColorResource(R.color.labelColor)
+        chip1.setTextColor(resources.getColor(R.color.white))
+        chip1.text = "@" + text2
         chipList.addView(chip1)
 
     }
