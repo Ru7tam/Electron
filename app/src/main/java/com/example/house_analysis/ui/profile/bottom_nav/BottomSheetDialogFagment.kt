@@ -13,7 +13,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import com.allyants.chipview.ChipView
 import com.example.house_analysis.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
@@ -23,7 +22,7 @@ import com.google.android.material.textfield.TextInputLayout
 
 class BottomSheetDialogFagment: BottomSheetDialogFragment() {
 
-    private lateinit var chipList : LinearLayout
+    private lateinit var chipList : ChipGroup
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         val view = LayoutInflater.from(context).inflate(R.layout.bottomsheet, null)
@@ -80,17 +79,11 @@ class BottomSheetDialogFagment: BottomSheetDialogFragment() {
         val dialog = Dialog(requireContext())
         dialog.setContentView(view)
 
-        chipList = view.findViewById(R.id.listChip)
+        chipList = view.findViewById(R.id.chipGroup)
         val addLabelBtn = view.findViewById<Button>(R.id.addLabelBtn)
         val addLabelEt = view.findViewById<TextInputEditText>(R.id.addLabelEt)
 
-        addLabelBtn.setOnClickListener {
-            val inputText = addLabelEt.text.toString().trim()
-            if (inputText.isNotEmpty()) {
-                addChip(inputText)
-                addLabelEt.text = null
-            }
-        }
+        addLabelBtn.setOnClickListener { addChip(addLabelEt.text.toString()) }
 
         // Set dialog width and height
         val window = dialog.window
@@ -107,10 +100,9 @@ class BottomSheetDialogFagment: BottomSheetDialogFragment() {
 
     private fun addChip(text2: String) {
         d("mytag", "$text2")
-        val chipView = LayoutInflater.from(context).inflate(R.layout.item_label, chipList, false) as ConstraintLayout
-        val chip = chipView.findViewById<Chip>(R.id.chipView)
-        chip.text = text2
+        val chip1 = Chip(requireContext())
+        chip1.text = text2
+        chipList.addView(chip1)
 
-        chipList.addView(chipView)
     }
 }
