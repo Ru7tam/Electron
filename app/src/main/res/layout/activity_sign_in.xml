@@ -59,7 +59,7 @@
         android:id="@+id/editTextMail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="E-mail"
+        android:hint="@string/email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Пароль"
+        android:hint="@string/password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -119,21 +119,23 @@
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonSignIn"
         android:gravity="center">
 
         <TextView
+            android:layout_marginRight="@dimen/marginTopForInputs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="У вас нет профиля?"
+            android:text="@string/uHaveAccount"
             android:textColor="@color/black"/>
         <TextView
             android:id="@+id/signUpTextView"
             android:textColor="@color/main_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Зарегистрироваться"/>
+            android:text="@string/signUp"/>
 
     </LinearLayout>
 

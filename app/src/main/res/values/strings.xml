@@ -76,4 +76,21 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aboutapptext">О приложении</string>
+    <string name="appVersion">Версия 1.1.1</string>
+    <string name="textFeedBack">Обратная связь</string>
+    <string name="textPrivacyPolicy">Политика конфиденциальности</string>
+    <string name="textTermsUse">Условия использования</string>
+    <string name="textEstimateApp">Оценить приложение</string>
+    <string name="textLanguage">Язык</string>
+    <string name="russianLanguage">Русский</string>
+    <string name="englishLanguage">English</string>
+    <string name="belarusianLanguage">Belarusian</string>
+    <string name="frenchLanguage">French</string>
+    <string name="germanLanguage">German</string>
+    <string name="italianLanguage">Italian</string>
+    <string name="compassText">Геолокация</string>
+    <string name="aboutAppText">О приложении</string>
+    <string name="signOutText">Выйти</string>
+    <string name="uHaveAccount">У вас нет профиля?</string>
 </resources>

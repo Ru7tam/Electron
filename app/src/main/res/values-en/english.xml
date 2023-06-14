@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name">house_analysis</string>
+    <string name="WelcomeTo">Welcome to</string>
+
+
+    <string name="nameCompany">Electron</string>
+
+
+    <string name="companyDescription">Приложение для [описание на две-три строки]</string>
+    <string name="signUp">Sign Up</string>
+    <string name="signIn">Sign In</string>
+    <string name="accountLogin">Sign in to your personal account</string>
+
+
+    <!--    SIGNUP texts-->
+
+    <!--    SIGNUP texts-->
+
+    <string name="accountLogup">Sign Up</string>
+    <string name="textSignup">Register to make your workflow more comfortable</string>
+    <string name="name">Name</string>
+    <string name="lastname">Surname</string>
+    <string name="datebirth">Date of birth</string>
+
+    <!--    GENDER-->
+
+    <!--    GENDER-->
+
+    <string name="gender">Пол</string>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <!--    <string name="g_man">Мужской</string>-->
+    <!--    <string name="g_woman">Женский</string>-->
+
+    <!--    <string name="g_man">Мужской</string>-->
+    <!--    <string name="g_woman">Женский</string>-->
+
+
+    <string name="phone">Phone number</string>
+    <string name="errorIfCountryNotCorrect">A phone number with the city code, for example +7 999 432 32 32</string>
+    <string name="email">E-mail</string>
+    <string name="confirmationWillBeSend">You will receive a confirmation link to your email to verify your account</string>
+    <string name="password">Password</string>
+    <string name="errorOccured">At least 8 characters, using only Latin letters and numbers</string>
+    <string name="confirPassword">Confirm password</string>
+    <string name="iHave18">I am 18 years old.</string>
+    <string name="acceptTopolicy">I agree to the <font color='#15499F'>terms of personal data processing</font></string>
+
+
+    <string name="ifUHaveAccount">Do you already have a profile?</string>
+
+    <string name="forgotPassword">Forgot your password?</string>
+
+    <string name="enterEmailText">Enter the email address you used to register. You will receive a code to reset your password</string>
+    <string name="restorePassword">Password recovery</string>
+    <string name="enterCodeText">Enter the code sent to your email</string>
+    <string name="codeText">"Code"</string>
+    <string name="readyText">"Done"</string>
+    <string name="newPassword">"New password"</string>
+    <string name="enterNewPassword">"Enter a new password."</string>
+    <string name="validationForPass">"Minimum of 8 characters, using only Latin letters and numbers."</string>
+    <string name="changePassword">"Change password"</string>
+
+
+    <string name="title_activity_sign_up">SignUp</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aboutapptext">О приложении</string>
+    <string name="appVersion">"Version 1.1.1"</string>
+    <string name="textFeedBack">Feedback</string>
+    <string name="textPrivacyPolicy">"Privacy policy"</string>
+    <string name="textTermsUse">"Terms of use"</string>
+    <string name="textEstimateApp">"Rate the app"</string>
+    <string name="textLanguage">Language</string>
+    <string name="russianLanguage">Russian</string>
+    <string name="englishLanguage">English</string>
+    <string name="belarusianLanguage">Belarusian</string>
+    <string name="frenchLanguage">French</string>
+    <string name="germanLanguage">German</string>
+    <string name="italianLanguage">Italian</string>
+    <string name="compassText">Compass</string>
+    <string name="aboutAppText">About the application</string>
+    <string name="signOutText">Sign Out</string>
+    <string name="uHaveAccount">Do you have a profile?</string>
+</resources>
