@@ -52,6 +52,7 @@
             android:textColor="@color/black"/>
 
         <ImageView
+            android:id="@+id/imageRussianLg"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="5dp"
@@ -92,6 +93,7 @@
             android:textColor="@color/black"/>
 
         <ImageView
+            android:id="@+id/imageEnglishLg"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="5dp"

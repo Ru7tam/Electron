@@ -3,22 +3,22 @@
     <item android:id="@+id/home"
         android:enabled="true"
         android:icon="@drawable/home_main"
-        android:title="Главная"/>
+        android:title="@string/homeBottomNav"/>
 
     <item android:id="@+id/search"
         android:enabled="true"
         android:titleCondensed="true"
         android:icon="@drawable/search_main"
-        android:title="Поиск"/>
+        android:title="@string/searchBottomNav"/>
 
     <item android:id="@+id/add"
         android:enabled="true"
         android:icon="@drawable/add_main"
-        android:title="Добавить"/>
+        android:title="@string/addBottomNav"/>
 
     <item android:id="@+id/dots"
         android:enabled="true"
         android:icon="@drawable/dots_main"
-        android:title="Выделить"/>
+        android:title="@string/highlight"/>
 
 </menu>

@@ -26,7 +26,7 @@
                 android:layout_marginBottom="20dp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
-                android:text="Выделить"
+                android:text="@string/highlight"
                 android:layout_height="wrap_content"/>
             <LinearLayout
                 android:orientation="vertical"
@@ -44,7 +44,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="11dp"
                         android:layout_width="wrap_content"
-                        android:text="Объединить в этаж и подъезд"
+                        android:text="@string/combine"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -69,7 +69,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="11dp"
                         android:layout_width="wrap_content"
-                        android:text="Добавить метку"
+                        android:text="@string/addLabel"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="11dp"
                         android:layout_width="wrap_content"
-                        android:text="Изменить приоритет"
+                        android:text="@string/changePriority"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -119,7 +119,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="11dp"
                         android:layout_width="wrap_content"
-                        android:text="Показать на карте"
+                        android:text="@string/showOnTheMap"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -144,7 +144,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="11dp"
                         android:layout_width="wrap_content"
-                        android:text="Установить сигнал"
+                        android:text="@string/setSignal"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -169,7 +169,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="11dp"
                         android:layout_width="wrap_content"
-                        android:text="Вставить"
+                        android:text="@string/insert"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="11dp"
                         android:layout_width="wrap_content"
-                        android:text="Копировать"
+                        android:text="@string/copy"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -219,7 +219,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="11dp"
                         android:layout_width="wrap_content"
-                        android:text="Редактировать"
+                        android:text="@string/edit"
                         android:layout_height="wrap_content"/>
                     <View
                         android:layout_width="match_parent"
@@ -244,7 +244,7 @@
                         android:textSize="16dp"
                         android:layout_marginBottom="15dp"
                         android:layout_width="wrap_content"
-                        android:text="Настроить"
+                        android:text="@string/configure"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
 
@@ -262,7 +262,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Отмена"
+        android:text="@string/cansel"
         android:padding="10dp"
         android:textAllCaps="false"
         android:textColor="@color/main_color"
