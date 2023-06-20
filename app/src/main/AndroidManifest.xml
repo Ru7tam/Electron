@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,6 +12,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.House_analysis"
+        android:networkSecurityConfig="@xml/network_s_config"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".ui.profile.AboutAppActivity"
@@ -20,9 +24,9 @@
         <activity
             android:name=".ui.profile.LanguageActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".ui.profile.MainAccountActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".ui.profile.MainAccountActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.additional.SuccessfullyRegisteredActivity"
             android:exported="false" />
@@ -42,7 +46,7 @@
             android:name=".ui.password.RestorePass"
             android:exported="false" />
         <activity
-            android:name=".ui.profile.MainAccountActivity"
+            android:name=".ui.additional.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
