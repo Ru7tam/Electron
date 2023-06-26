@@ -1,84 +1,97 @@
 package com.example.house_analysis.ui.register
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 
 import androidx.core.widget.doOnTextChanged
 import androidx.appcompat.app.AppCompatActivity
+import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivitySignInBinding
+import com.example.house_analysis.network.api.RequestRepositoryProvider
+import com.example.house_analysis.network.api.Token
 import com.example.house_analysis.ui.password.RestorePass
 import com.example.house_analysis.ui.profile.MainAccountActivity
-import com.example.house_analysis.ui.register.SignUpActivity
 import com.google.android.material.textfield.TextInputLayout
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
+
+    private val networkRepository = RequestRepositoryProvider.provideRequestRepository()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-        forBackButton()
-        forForgotPassword()
-        forButtonSignIn()
-        forsignUpTextView()
 
-        var editTextMail = binding.editTextMail
-        errorOccuredInEmail(editTextMail)
-        fortextSignIn()
+        setListenerForViews()
+        errorOccurredInEmail(binding.editTextMail)
 
     }
 
-    fun forBackButton(){
-        binding.backButton.setOnClickListener {
-            finish()
+    private fun requestToLogin() {
+        networkRepository.loginUser(
+            email = binding.editTextMail.editText?.text.toString(),
+            password = binding.editTextPassword.editText?.text.toString()
+        )
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe(
+                { result ->
+                    Log.d("Network", result.toString())
+
+                    Token.setToken(result.token)
+                    openActivity(MainAccountActivity::class.java)
+                }, { error ->
+                    Exception(error).printStackTrace()
+
+                    applicationContext.toast("Логин или пароль введены неверно")
+                }
+            )
+    }
+
+    private fun setListenerForViews() {
+        val listener = View.OnClickListener {
+            when (it.id) {
+                R.id.backButton -> finish()
+                R.id.buttonSignIn -> requestToLogin()
+                R.id.forgotPassword -> openActivity(RestorePass::class.java)
+                R.id.signUpTextView -> openActivity(SignUpActivity::class.java)
+            }
         }
+        binding.backButton.setOnClickListener(listener)
+        binding.buttonSignIn.setOnClickListener(listener)
+        binding.forgotPassword.setOnClickListener(listener)
+        binding.signUpTextView.setOnClickListener(listener)
     }
 
-    fun forButtonSignIn(){
-        binding.buttonSignIn.setOnClickListener {
-            val intent = Intent(this, MainAccountActivity::class.java)
-            startActivity(intent)
-        }
+    private fun Context.toast(message: CharSequence) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    fun forForgotPassword(){
-        binding.forgotPassword.setOnClickListener{
-            val intent = Intent(this, RestorePass::class.java)
-            startActivity(intent)
-        }
+    private fun openActivity(targetActivity: Class<*>) {
+        val intent = Intent(this, targetActivity)
+        startActivity(intent)
     }
 
-    fun forsignUpTextView(){
-        binding.signUpTextView.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-
-    fun errorOccuredInEmail(editTextMail : TextInputLayout){
+    private fun errorOccurredInEmail(editTextMail: TextInputLayout) {
         editTextMail.editText?.doOnTextChanged { inputText, _, _, _ ->
             // Respond to input text change
-            if (inputText != null && inputText.isNotEmpty()) {
-                if ("@" !in inputText){
+            if (!inputText.isNullOrEmpty()) {
+                if ("@" !in inputText) {
                     editTextMail.error = "Неверный формат почты"
-                }
-                else if ("@" in inputText){
+                } else {
                     editTextMail.isErrorEnabled = false
                 }
-            }
-            else {
+            } else {
                 editTextMail.isErrorEnabled = false
             }
-        }
-    }
-
-    fun fortextSignIn(){
-        binding.signUpTextView.setOnClickListener{
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 }
