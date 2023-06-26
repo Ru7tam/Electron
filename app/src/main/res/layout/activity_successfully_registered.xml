@@ -23,7 +23,7 @@
         android:gravity="center"
         android:layout_marginBottom="25dp"
         android:layout_height="wrap_content"
-        android:text="Все получилось!"
+        android:text="@string/everythingWorkedOut"
         android:textSize="24sp"
         android:textColor="@color/black"
         android:textStyle="bold"/>
@@ -34,13 +34,13 @@
         android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginBottom="35dp"
-        android:text="Осталось активировать аккаунт \nпо ссылке на почте, чтобы появился \nдоступ к профилю!"
+        android:text="@string/activateAccount"
         android:textSize="16sp"
         android:textColor="@color/black" />
     <Button
         android:id="@+id/btn_success"
         android:layout_width="match_parent"
-        android:text="Понятно"
+        android:text="@string/itsClear"
         style="@style/buttonSignUp"
         android:textSize="18sp"
         android:inputType="textCapWords"
