@@ -1,6 +1,6 @@
 package com.example.house_analysis.ui.register
 
-import API_ROUTE
+
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
@@ -12,8 +12,6 @@ import android.view.View
 import android.widget.*
 import androidx.core.widget.doOnTextChanged
 import com.example.house_analysis.R
-import com.example.house_analysis.backend.api.authentication.api_auth
-import com.example.house_analysis.backend.api.authentication.auth_register_user
 import com.example.house_analysis.ui.register.SignInActivity
 import com.example.house_analysis.databinding.ActivitySignUpBinding
 import com.example.house_analysis.ui.additional.SuccessfullyRegisteredActivity
@@ -85,7 +83,7 @@ class SignUpActivity : AppCompatActivity() {
 
         validationFields(name, lastname, gender, dateBirth, phone, email, password, confirmPassword, iHave18, policy)
 
-        auth_register_user_fun("2023-06-20", "alim@gmail.com", "Ismail ajiodjpo asds", "MALE", "A12345678", "9293490289")
+
     }
 
     fun onBackBtnPressed(){
@@ -294,46 +292,6 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-        fun auth_register_user_fun(birthday: String,
-                               email: String,
-                               fullname: String,
-                               gender: String,
-                               password: String,
-                               phone: String){
-            val gson = GsonBuilder().setLenient().create()
-            val retrofit = Retrofit.Builder()
-                .baseUrl(API_ROUTE.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build()
-
-            val apiService = retrofit.create(api_auth::class.java)
-
-            val requestData = auth_register_user(birthday, email, fullname, gender, password, phone)
-            val requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), Gson().toJson(requestData))
-
-            val call = apiService.register_user(requestBody)
-
-            call.enqueue(object : Callback<auth_register_user> {
-                override fun onResponse(call: Call<auth_register_user>, response: Response<auth_register_user>) {
-                    d("mytag", "Res: $response")
-                    if (response.isSuccessful) {
-                        val responseData = response.body()
-                        // Process the responseData here
-                        d("mytag", "$responseData")
-                    } else {
-                        // Handle unsuccessful response
-                        d("mytag", "${response.body()}")
-                    }
-                }
-
-                override fun onFailure(call: Call<auth_register_user>, t: Throwable) {
-                    // Handle network or other errors
-                    d("mytag", "ON FAILURE: $t")
-                }
-            })
-
-
-    }
 
 }
 
