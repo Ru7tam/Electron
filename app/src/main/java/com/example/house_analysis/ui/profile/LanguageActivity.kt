@@ -1,13 +1,39 @@
 package com.example.house_analysis.ui.profile
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import com.example.house_analysis.R
+import androidx.appcompat.app.AppCompatActivity
+import com.example.house_analysis.LanguageChangedActivity
+import com.example.house_analysis.databinding.ActivityLanguageBinding
 
 class LanguageActivity : AppCompatActivity() {
+    lateinit var binding: ActivityLanguageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_language)
+        binding = ActivityLanguageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.hide()
+        forBackButton()
+        changeLanguage()
+    }
+
+    fun forBackButton() {
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+    }
+
+    fun changeLanguage() {
+        with(binding) {
+            englishLanguageLinear.setOnClickListener {
+                val currentLanguage = LanguageChangedActivity.getCurrentLanguage(this@LanguageActivity)
+                val newLanguage = if (currentLanguage == "en") "ru" else "en"
+
+                val intent = Intent(this@LanguageActivity, LanguageChangedActivity::class.java)
+                intent.putExtra("language", newLanguage)
+                startActivity(intent)
+            }
+
+        }
     }
 }

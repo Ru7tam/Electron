@@ -71,7 +71,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Адрес"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -113,10 +115,12 @@
                     android:layout_height="wrap_content"
                     android:hint="От"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
                     <com.google.android.material.textfield.TextInputEditText
-                        android:inputType="number"
+                        android:id="@+id/text_from"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,10 +136,12 @@
                     android:layout_height="wrap_content"
                     android:hint="До"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_to"
                         android:layout_width="match_parent"
-                        android:inputType="number"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
