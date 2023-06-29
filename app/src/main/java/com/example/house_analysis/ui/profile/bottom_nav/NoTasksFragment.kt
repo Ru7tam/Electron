@@ -42,6 +42,7 @@ class NoTasksFragment : Fragment() {
 
         binding.createTask.setOnClickListener {
             showDialog()
+            requestGetTasks()
         }
     }
 
@@ -52,7 +53,9 @@ class NoTasksFragment : Fragment() {
             .subscribeOn(Schedulers.io())
             .subscribe(
                 { result ->
-                    Log.d("Network", result.toString())
+                    result.forEach {
+                        Log.d("Network", it.toString())
+                    }
                     tasks = result
                 }, { error ->
                     Exception(error).printStackTrace()
