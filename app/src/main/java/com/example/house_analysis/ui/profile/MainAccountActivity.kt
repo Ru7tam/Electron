@@ -1,12 +1,7 @@
 package com.example.house_analysis.ui.profile
 
-import android.graphics.Color
 import android.graphics.PorterDuff
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.WindowManager
-import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -17,16 +12,11 @@ import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivityAccountMainBinding
 import com.example.house_analysis.ui.profile.bottom_nav.AddFragment
 import com.example.house_analysis.ui.profile.bottom_nav.BottomSheetDialogFagment
-import com.example.house_analysis.ui.profile.bottom_nav.DotsFragment
 import com.example.house_analysis.ui.profile.bottom_nav.HomeFragment
-import com.example.house_analysis.ui.profile.bottom_nav.NoTasksFragment
 import com.example.house_analysis.ui.profile.bottom_nav.SearchFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.example.house_analysis.ui.profile.top_nav.ProfileFragment
 import com.example.house_analysis.ui.profile.top_nav.SettingsFragment
 import com.example.house_analysis.ui.profile.top_nav.TasksFragment
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MainAccountActivity : AppCompatActivity(){
     lateinit var binding: ActivityAccountMainBinding

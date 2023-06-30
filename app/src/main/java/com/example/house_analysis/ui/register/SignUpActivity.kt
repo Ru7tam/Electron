@@ -1,19 +1,22 @@
 package com.example.house_analysis.ui.register
 
-
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.StrictMode
 import android.util.Log.d
+import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.core.widget.doOnTextChanged
 import com.example.house_analysis.R
-import com.example.house_analysis.ui.register.SignInActivity
 import com.example.house_analysis.databinding.ActivitySignUpBinding
+import com.example.house_analysis.network.api.RequestRepositoryProvider
 import com.example.house_analysis.ui.additional.SuccessfullyRegisteredActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
@@ -25,10 +28,17 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
+    private val networkRepository = RequestRepositoryProvider.provideRequestRepository()
+
     private var selectedYear = 0
     private var selectedMonth = 0
     private var selectedDayOfMonth = 0
@@ -37,16 +47,12 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var name: TextInputLayout
     private lateinit var lastname: TextInputLayout
     private lateinit var dateBirth: TextView
-
     private lateinit var gender: AutoCompleteTextView
-    private lateinit var genderText : TextInputLayout
-
     private lateinit var phone: TextInputLayout
     private lateinit var email: TextInputLayout
     private lateinit var password: TextInputLayout
     private lateinit var confirmPassword: TextInputLayout
-
-    private lateinit  var iHave18: CheckBox
+    private lateinit var iHave18: CheckBox
     private lateinit var policy: CheckBox
 
     private var isFieldsValid = false
@@ -78,21 +84,56 @@ class SignUpActivity : AppCompatActivity() {
         datePicker()
         initFields()
         passwordsValidation()
-        errorOccuredInEmail()
-        fortextSignIn()
+        errorOccurredInEmail()
+        forTextSignIn()
+
 
         validationFields(name, lastname, gender, dateBirth, phone, email, password, confirmPassword, iHave18, policy)
-
-
     }
 
-    fun onBackBtnPressed(){
+    private fun registrationRequest() {
+        val fullName = name.editText?.text.toString() + " " + lastname.editText?.text.toString()
+        val email = email.editText?.text.toString()
+        val password = confirmPassword.editText?.text.toString()
+        val gender = if(gender.text.toString() == "Мужской") "MALE" else "FEMALE" //TODO (HARDCODED)
+        val birthday = formatDate(dateBirth.text)
+        val phone = phone.editText?.text.toString()
+
+        networkRepository.registerUser(fullName, email, password, gender, birthday.toString(), phone)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe(
+                { result ->
+                    Log.d("Network", result.toString())
+                    when (result.code()) {
+                        200 -> {
+                            startActivity(Intent(this, SuccessfullyRegisteredActivity::class.java))
+                            finish()
+                        }
+                        else -> applicationContext.toast("Что-то пошло не так, повторите попытку через несколько минут")
+                    }
+                }, { error ->
+                    Exception(error).printStackTrace()
+                }
+            )
+    }
+
+    private fun formatDate(date: CharSequence): String {
+        val formatter = DateTimeFormatter.ofPattern("d/M/yyyy")
+        return LocalDate.parse(date, formatter).toString()
+    }
+
+    private fun Context.toast(message: CharSequence) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    private fun onBackBtnPressed(){
         binding.backButton.setOnClickListener {
             finish()
         }
     }
 
-    fun fortextSignIn(){
+    private fun forTextSignIn(){
         binding.textSignIn.setOnClickListener{
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
@@ -100,7 +141,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    fun datePicker() {
+    private fun datePicker() {
 
         val defaultDate = Calendar.getInstance()
         selectedYear = defaultDate.get(Calendar.YEAR)
@@ -138,7 +179,7 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    fun passwordsValidation(){
+    private fun passwordsValidation(){
         var password1 = binding.password
         var password2 = binding.confirmPassword
 
@@ -199,7 +240,7 @@ class SignUpActivity : AppCompatActivity() {
 
         }
     }
-    fun initFields(){
+    private fun initFields(){
         binding.apply {
             this@SignUpActivity.name = name
             this@SignUpActivity.lastname = lastname
@@ -215,7 +256,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    fun validationFields(vararg fields: View) {
+    private fun validationFields(vararg fields: View) {
         fields.forEach { field ->
             when(field) {
                 is TextInputLayout -> {
@@ -259,7 +300,12 @@ class SignUpActivity : AppCompatActivity() {
         isFieldsValid = areAllFieldsValid()
 
         binding.buttonSignUp.isEnabled = isFieldsValid
-        signUpBtn.setOnClickListener{ if (isFieldsValid) { startActivity(Intent(this, SuccessfullyRegisteredActivity::class.java)) } else null}
+
+        signUpBtn.setOnClickListener{
+            if (isFieldsValid) {
+                registrationRequest()
+            } else applicationContext.toast("Проверьте поля и исправьте ошибки")
+        }
     }
 
     private fun areAllFieldsValid(): Boolean {
@@ -273,15 +319,15 @@ class SignUpActivity : AppCompatActivity() {
         return isMailValid && arePasswordsEqual && isTextInputLayoutsValid && isCheckBoxesValid && isAutoCompleteTextViewValid && isTextViewValid
     }
 
-    fun errorOccuredInEmail(){
+    private fun errorOccurredInEmail(){
         email.editText?.doOnTextChanged { inputText, _, _, _ ->
             // Respond to input text change
-            if (inputText != null && inputText.isNotEmpty()) {
+            if (!inputText.isNullOrEmpty()) {
                 if ("@" !in inputText){
                     email.error = "Неверный формат почты"
                     isMailValid = false
                 }
-                else if ("@" in inputText){
+                else {
                     email.isErrorEnabled = false
                     isMailValid = true
                 }
