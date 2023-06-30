@@ -12,11 +12,12 @@ import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivityAccountMainBinding
 import com.example.house_analysis.ui.profile.bottom_nav.AddFragment
 import com.example.house_analysis.ui.profile.bottom_nav.BottomSheetDialogFagment
-import com.example.house_analysis.ui.profile.bottom_nav.HomeFragment
+
+import com.example.house_analysis.ui.profile.bottom_nav.TasksFragment
+
 import com.example.house_analysis.ui.profile.bottom_nav.SearchFragment
 import com.example.house_analysis.ui.profile.top_nav.ProfileFragment
 import com.example.house_analysis.ui.profile.top_nav.SettingsFragment
-import com.example.house_analysis.ui.profile.top_nav.TasksFragment
 
 class MainAccountActivity : AppCompatActivity(){
     lateinit var binding: ActivityAccountMainBinding
@@ -100,7 +101,7 @@ class MainAccountActivity : AppCompatActivity(){
         binding.navBar.setOnItemSelectedListener {
                 when(it.itemId) {
                     R.id.home ->
-                        openFragment(HomeFragment())
+                        openFragment(TasksFragment())
                     R.id.search ->
                         openFragment(SearchFragment())
                     R.id.add ->
@@ -121,7 +122,7 @@ class MainAccountActivity : AppCompatActivity(){
     }
     fun openDefaultFragment(savedInstanceState: Bundle?){
         if (savedInstanceState == null){
-            val defaultFrament = NoTasksFragment()
+            val defaultFrament = com.example.house_analysis.ui.profile.bottom_nav.TasksFragment()
             supportFragmentManager.beginTransaction()
                 .add(R.id.relativeContainer, defaultFrament)
                 .commit()

@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.profile.bottom_nav.NoTasksFragment">
+    tools:context=".ui.profile.bottom_nav.TasksFragment">
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ifTasksExists"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_marginHorizontal="15dp"
+            android:textColor="@color/colorChangeImage"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Список задач" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
+        android:id="@+id/ifTasksNotExists"
         android:orientation="vertical"
         android:layout_width="300dp"
         android:layout_gravity="center_horizontal"
