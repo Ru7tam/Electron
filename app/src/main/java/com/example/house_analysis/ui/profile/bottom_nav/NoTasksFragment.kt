@@ -15,6 +15,7 @@ import android.widget.ImageView
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.FragmentNoTasksBinding
 import com.example.house_analysis.network.api.RequestRepositoryProvider
+import com.example.house_analysis.network.model.response.TasksResponse
 import com.google.android.material.textfield.TextInputEditText
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -41,22 +42,25 @@ class NoTasksFragment : Fragment() {
 
         binding.createTask.setOnClickListener {
             showDialog()
-            requestGetTasks()
+
         }
     }
 
-    private fun requestGetTasks() {
-        networkRepository.getTasks()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                { result ->
-                    Log.d("Network", result.toString())
-                }, { error ->
-                    Exception(error).printStackTrace()
-                }
-            )
-    }
+//    private fun requestGetTasks(): ArrayList<TasksResponse> {
+//        var tasks = arrayListOf<TasksResponse>()
+//        networkRepository.getTasks()
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribeOn(Schedulers.io())
+//            .subscribe(
+//                { result ->
+//                    Log.d("Network", result.toString())
+//                    tasks = result
+//                }, { error ->
+//                    Exception(error).printStackTrace()
+//                }
+//            )
+//        return tasks
+//    }
 
     private fun showDialog(){
         val dialog = Dialog(requireContext())

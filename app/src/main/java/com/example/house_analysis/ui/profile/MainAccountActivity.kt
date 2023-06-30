@@ -18,6 +18,7 @@ import com.example.house_analysis.databinding.ActivityAccountMainBinding
 import com.example.house_analysis.ui.profile.bottom_nav.AddFragment
 import com.example.house_analysis.ui.profile.bottom_nav.BottomSheetDialogFagment
 import com.example.house_analysis.ui.profile.bottom_nav.DotsFragment
+import com.example.house_analysis.ui.profile.bottom_nav.HomeFragment
 import com.example.house_analysis.ui.profile.bottom_nav.NoTasksFragment
 import com.example.house_analysis.ui.profile.bottom_nav.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -109,7 +110,7 @@ class MainAccountActivity : AppCompatActivity(){
         binding.navBar.setOnItemSelectedListener {
                 when(it.itemId) {
                     R.id.home ->
-                        openFragment(NoTasksFragment())
+                        openFragment(HomeFragment())
                     R.id.search ->
                         openFragment(SearchFragment())
                     R.id.add ->

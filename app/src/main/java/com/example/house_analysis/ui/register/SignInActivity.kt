@@ -31,7 +31,7 @@ class SignInActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         setListenerForViews()
-        errorOccurredInEmail(binding.editTextMail)
+//        errorOccurredInEmail(binding.editTextMail)
 
     }
 
