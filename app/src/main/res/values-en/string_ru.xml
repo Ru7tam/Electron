@@ -33,12 +33,6 @@
         <item>Женский</item>
     </string-array>
 
-    <!--    <string name="g_man">Мужской</string>-->
-    <!--    <string name="g_woman">Женский</string>-->
-
-    <!--    <string name="g_man">Мужской</string>-->
-    <!--    <string name="g_woman">Женский</string>-->
-
 
     <string name="phone">Телефон</string>
     <string name="errorIfCountryNotCorrect">Номер с кодом города, например +7 999 432 32 32</string>

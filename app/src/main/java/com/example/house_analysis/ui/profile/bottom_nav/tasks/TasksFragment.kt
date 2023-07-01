@@ -1,4 +1,4 @@
-package com.example.house_analysis.ui.profile.bottom_nav
+package com.example.house_analysis.ui.profile.bottom_nav.tasks
 
 import android.app.Dialog
 import android.graphics.Color
@@ -13,16 +13,17 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageView
 import com.example.house_analysis.R
-import com.example.house_analysis.databinding.FragmentNoTasksBinding
+import com.example.house_analysis.databinding.FragmentTasksBinding
 import com.example.house_analysis.network.api.RequestRepositoryProvider
+import com.example.house_analysis.network.model.response.TaskWithSubtasks
 import com.example.house_analysis.network.model.response.TasksResponse
 import com.google.android.material.textfield.TextInputEditText
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 
-class NoTasksFragment : Fragment() {
-    private var _binding : FragmentNoTasksBinding? = null
+class TasksFragment : Fragment() {
+    private var _binding : FragmentTasksBinding? = null
     private val binding get() = _binding!!
 
     private val networkRepository = RequestRepositoryProvider.provideRequestRepository()
@@ -32,7 +33,7 @@ class NoTasksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentNoTasksBinding.inflate(inflater, container, false)
+        _binding = FragmentTasksBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
@@ -43,6 +44,7 @@ class NoTasksFragment : Fragment() {
         binding.createTask.setOnClickListener {
             showDialog()
             requestGetTasks()
+            requestGetTaskWithSubtasks(25)
         }
     }
 
@@ -56,12 +58,29 @@ class NoTasksFragment : Fragment() {
                     result.forEach {
                         Log.d("Network", it.toString())
                     }
+
                     tasks = result
                 }, { error ->
                     Exception(error).printStackTrace()
                 }
             )
         return tasks
+    }
+
+    private fun requestGetTaskWithSubtasks(taskId: Int): TaskWithSubtasks {
+        var response = TaskWithSubtasks(0, "null", 0, emptyList())
+        networkRepository.getFullTaskWithSubtasks(taskId)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe(
+                { result ->
+                    Log.d("Network", result.toString())
+                    response = result
+                }, { error ->
+                    Exception(error).printStackTrace()
+                }
+            )
+        return response
     }
 
     private fun showDialog(){

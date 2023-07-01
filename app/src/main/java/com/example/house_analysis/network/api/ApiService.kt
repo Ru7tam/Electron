@@ -4,6 +4,7 @@ import com.example.house_analysis.network.model.request.LoungeFloorModel
 import com.example.house_analysis.network.model.request.TaskRequestModel
 import com.example.house_analysis.network.model.request.UserLoginData
 import com.example.house_analysis.network.model.request.UserRegisterData
+import com.example.house_analysis.network.model.response.TaskWithSubtasks
 import com.example.house_analysis.network.model.response.TasksResponse
 import com.example.house_analysis.network.model.response.TokenResponse
 import io.reactivex.Observable
@@ -18,6 +19,7 @@ import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -27,14 +29,17 @@ interface ApiService {
     @GET("tasks/user")
     fun getTasks(): Observable<ArrayList<TasksResponse>>
 
+    @GET("tasks/{taskId}/subtasks")
+    fun getFullTaskWithSubtasks(@Path("taskId") taskId: Int): Observable<TaskWithSubtasks>
+
+    @PATCH("tasks/{taskId}/subtasks/replace")
+    fun replaceFloorAndLoungeForSubtask(@Path("taskId") taskId: Int, @Body request: LoungeFloorModel): Observable<Response<Unit>>
+
     @POST("auth")
     fun loginUser(@Body userData: UserLoginData): Observable<TokenResponse>
 
     @POST("auth/register")
     fun registerUser(@Body userData: UserRegisterData): Observable<Response<Unit>>
-
-    @PATCH("tasks/{taskId}/subtasks/replace")
-    fun replaceFloorAndLoungeForSubtask(@Path("taskId") taskId: Int, @Body request: LoungeFloorModel): Observable<Response<Unit>>
 
 
     companion object Factory {

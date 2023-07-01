@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -17,13 +16,11 @@ import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivityAccountMainBinding
 import com.example.house_analysis.ui.profile.bottom_nav.AddFragment
 import com.example.house_analysis.ui.profile.bottom_nav.DotsFragment
-import com.example.house_analysis.ui.profile.bottom_nav.NoTasksFragment
+import com.example.house_analysis.ui.profile.bottom_nav.tasks.TasksFragment
 import com.example.house_analysis.ui.profile.bottom_nav.SearchFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.example.house_analysis.ui.profile.top_nav.ProfileFragment
 import com.example.house_analysis.ui.profile.top_nav.SettingsFragment
-import com.example.house_analysis.ui.profile.top_nav.TasksFragment
 
 class MainAccountActivity : AppCompatActivity() {
     lateinit var binding: ActivityAccountMainBinding
@@ -33,7 +30,7 @@ class MainAccountActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         forClickSettingImageView()
-        forClickTasksImageView()
+        forClickLabelImageView()
         forClickProfileImageView()
 //        forDefaultFragment()
 
@@ -46,7 +43,7 @@ class MainAccountActivity : AppCompatActivity() {
         binding.settingsImageView.setOnClickListener {
             // Изменение цвета ImageView
             binding.settingsImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorChangeImage), PorterDuff.Mode.SRC_IN)
-            binding.tasksImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
+            binding.labelImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
             binding.profileImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
 
             // Переход на другой фрагмент
@@ -57,15 +54,15 @@ class MainAccountActivity : AppCompatActivity() {
         }
     }
 
-    fun forClickTasksImageView(){
-        binding.tasksImageView.setOnClickListener {
+    fun forClickLabelImageView(){
+        binding.labelImageView.setOnClickListener {
             // Изменение цвета ImageView
-            binding.tasksImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorChangeImage), PorterDuff.Mode.SRC_IN)
+            binding.labelImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorChangeImage), PorterDuff.Mode.SRC_IN)
             binding.settingsImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
             binding.profileImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
 
             // Переход на другой фрагмент
-            val fragment = TasksFragment()
+            val fragment = TasksFragment() //TODO("Заменить на Label фрагмент")
             supportFragmentManager.beginTransaction()
                 .replace(R.id.relativeContainer, fragment)
                 .commit()
@@ -77,7 +74,7 @@ class MainAccountActivity : AppCompatActivity() {
             // Изменение цвета ImageView
             binding.profileImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorChangeImage), PorterDuff.Mode.SRC_IN)
             binding.settingsImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
-            binding.tasksImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
+            binding.labelImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
 
             // Переход на другой фрагмент
             val fragment = ProfileFragment()
@@ -90,8 +87,9 @@ class MainAccountActivity : AppCompatActivity() {
 
 
     // функция для того, чтобы фрагмент Tasks открывался по дефолту
+    // By Yaroslav (Lump) Это не Tasks фрагмент. Tasks фрагмент это HomeFragment
     fun forDefaultFragment(){   
-        binding.tasksImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorChangeImage), PorterDuff.Mode.SRC_IN)
+        binding.labelImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorChangeImage), PorterDuff.Mode.SRC_IN)
         val frameLayout: RelativeLayout = findViewById(R.id.relativeContainer)
 
         val fragment: Fragment = TasksFragment() // Создаем экземпляр TasksFragment
@@ -107,7 +105,7 @@ class MainAccountActivity : AppCompatActivity() {
         binding.navBar.setOnItemSelectedListener {
                 when(it.itemId) {
                     R.id.home ->
-                        openFragment(NoTasksFragment())
+                        openFragment(TasksFragment())
                     R.id.search ->
                         openFragment(SearchFragment())
                     R.id.add ->
@@ -128,7 +126,7 @@ class MainAccountActivity : AppCompatActivity() {
     }
     fun openDefaultFragment(savedInstanceState: Bundle?){
         if (savedInstanceState == null){
-            val defaultFrament = NoTasksFragment()
+            val defaultFrament = TasksFragment()
             supportFragmentManager.beginTransaction()
                 .add(R.id.relativeContainer, defaultFrament)
                 .commit()

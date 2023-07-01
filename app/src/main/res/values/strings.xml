@@ -192,7 +192,7 @@
     <string name="compassText">Compass</string>
     <string name="aboutAppText">About the application</string>
     <string name="signOutText">Sign Out</string>
-    <string name="uHaveAccount">Do you have a profile?</string>
+    <string name="uHaveAccount">Don\'t have a profile?</string>
     <string name="homeBottomNav">Home</string>
     <string name="searchBottomNav">Search</string>
     <string name="addBottomNav">Add</string>
@@ -211,5 +211,5 @@
     <string name="copy">Copy</string>
     <string name="edit">Edit</string>
     <string name="configure">Configure</string>
-    <string name="cansel">Cansel</string>
+    <string name="cansel">Canсel</string>
 </resources>

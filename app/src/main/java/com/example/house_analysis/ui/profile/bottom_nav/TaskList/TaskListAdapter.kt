@@ -7,7 +7,6 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.house_analysis.R
-import kotlin.math.sign
 
 class TaskListAdapter (private val dataList: List<Tasks>):
     RecyclerView.Adapter<TaskListAdapter.ViewHolder>() {
@@ -15,10 +14,10 @@ class TaskListAdapter (private val dataList: List<Tasks>):
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
 
-        var isChecked = itemView.findViewById<CheckBox>(R.id.isChecked)
-        val street = itemView.findViewById<TextView>(R.id.street)
-        val appartmentLis = itemView.findViewById<TextView>(R.id.appartmentList)
-        val floorList = itemView.findViewById<TextView>(R.id.floorList)
+        var isChecked: CheckBox = itemView.findViewById(R.id.isChecked)
+        val street: TextView = itemView.findViewById(R.id.street)
+        val apartmentLis: TextView = itemView.findViewById(R.id.apartmentList)
+        val floorList: TextView = itemView.findViewById(R.id.floorList)
 
         fun bind(data:Tasks){
 
@@ -36,12 +35,15 @@ class TaskListAdapter (private val dataList: List<Tasks>):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = dataList[position]
-        holder.isChecked.isChecked = dataList[position].isChecked
-        holder.street.text = dataList[position].street
-        val appartmentStr = "${dataList[position].apartment[0]}-${dataList[position].apartment[dataList[position].apartment.size - 1]}"
-        holder.appartmentLis.text = appartmentStr
+        val apartmentStr = "${dataList[position].apartment[0]}-${dataList[position].apartment[dataList[position].apartment.size - 1]}"
         val floorStr = "${dataList[position].floors[0]}-${dataList[position].floors.size - 1}"
-        holder.floorList.text = floorStr
-        holder.bind(data)
+
+        holder.apply{
+            isChecked.isChecked = dataList[position].isChecked
+            street.text = dataList[position].street
+            apartmentLis.text = apartmentStr
+            floorList.text = floorStr
+            bind(data)
+        }
     }
 }
