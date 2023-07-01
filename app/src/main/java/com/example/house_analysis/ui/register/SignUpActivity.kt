@@ -1,32 +1,32 @@
 package com.example.house_analysis.ui.register
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.lifecycleScope
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivitySignUpBinding
 import com.example.house_analysis.network.api.RequestRepositoryProvider
+import com.example.house_analysis.network.api.builtRequests.BuiltRequestsRepository
+import com.example.house_analysis.network.model.request.UserRegisterData
 import com.example.house_analysis.ui.additional.SuccessfullyRegisteredActivity
 import com.google.android.material.textfield.TextInputLayout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.text.SimpleDateFormat
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
-    private val networkRepository = RequestRepositoryProvider.provideRequestRepository()
+    private val networkRepository = BuiltRequestsRepository()
 
     private var selectedYear = 0
     private var selectedMonth = 0
@@ -80,23 +80,25 @@ class SignUpActivity : AppCompatActivity() {
         val birthday = formatDate(dateBirth.text)
         val phone = phone.editText?.text.toString()
 
-        networkRepository.registerUser(fullName, email, password, gender, birthday.toString(), phone)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                { result ->
-                    Log.d("Network", result.toString())
-                    when (result.code()) {
-                        200 -> {
-                            startActivity(Intent(this, SuccessfullyRegisteredActivity::class.java))
-                            finish()
-                        }
-                        else -> applicationContext.toast("Что-то пошло не так, повторите попытку через несколько минут")
-                    }
-                }, { error ->
-                    Exception(error).printStackTrace()
-                }
+        lifecycleScope.launch {
+            val responseCode = networkRepository.register(
+                UserRegisterData(
+                    fullName,
+                    email,
+                    password,
+                    gender,
+                    birthday,
+                    phone
+                )
             )
+            when (responseCode) {
+                200 -> {
+                    startActivity(Intent(applicationContext, SuccessfullyRegisteredActivity::class.java))
+                    finish()
+                }
+                else -> applicationContext.toast("Что-то пошло не так, повторите попытку через несколько минут")
+            }
+        }
     }
 
     private fun formatDate(date: CharSequence): String {

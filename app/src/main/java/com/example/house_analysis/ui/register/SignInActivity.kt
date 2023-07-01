@@ -3,26 +3,26 @@ package com.example.house_analysis.ui.register
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-
-import androidx.core.widget.doOnTextChanged
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.lifecycleScope
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivitySignInBinding
-import com.example.house_analysis.network.api.RequestRepositoryProvider
-import com.example.house_analysis.network.api.Token
+import com.example.house_analysis.network.api.builtRequests.BuiltRequestsRepository
+import com.example.house_analysis.network.model.request.UserLoginData
 import com.example.house_analysis.ui.password.RestorePass
 import com.example.house_analysis.ui.profile.MainAccountActivity
 import com.google.android.material.textfield.TextInputLayout
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
 
-    private val networkRepository = RequestRepositoryProvider.provideRequestRepository()
+    private val networkRepository = BuiltRequestsRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,32 +35,11 @@ class SignInActivity : AppCompatActivity() {
 
     }
 
-    private fun requestToLogin() {
-        networkRepository.loginUser(
-            email = binding.editTextMail.editText?.text.toString(),
-            password = binding.editTextPassword.editText?.text.toString()
-        )
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                { result ->
-                    Log.d("Network", result.toString())
-
-                    Token.setToken(result.token)
-                    openActivity(MainAccountActivity::class.java)
-                }, { error ->
-                    Exception(error).printStackTrace()
-
-                    applicationContext.toast("Логин или пароль введены неверно")
-                }
-            )
-    }
-
     private fun setListenerForViews() {
         val listener = View.OnClickListener {
             when (it.id) {
                 R.id.backButton -> finish()
-                R.id.buttonSignIn -> requestToLogin()
+                R.id.buttonSignIn -> loginRequest()
                 R.id.forgotPassword -> openActivity(RestorePass::class.java)
                 R.id.signUpTextView -> openActivity(SignUpActivity::class.java)
             }
@@ -69,6 +48,22 @@ class SignInActivity : AppCompatActivity() {
         binding.buttonSignIn.setOnClickListener(listener)
         binding.forgotPassword.setOnClickListener(listener)
         binding.signUpTextView.setOnClickListener(listener)
+    }
+
+    private fun loginRequest() {
+        lifecycleScope.launch {
+            val success = networkRepository.login(
+                UserLoginData(
+                    binding.editTextMail.editText?.text.toString(),
+                    binding.editTextPassword.editText?.text.toString()
+                )
+            )
+            if (success) {
+                openActivity(MainAccountActivity::class.java)
+            } else {
+                applicationContext.toast("Логин или пароль введены неверно")
+            }
+        }
     }
 
     private fun Context.toast(message: CharSequence) {

@@ -9,7 +9,6 @@ import com.example.house_analysis.network.model.response.TasksResponse
 import com.example.house_analysis.network.model.response.TokenResponse
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.http.Body
@@ -19,7 +18,6 @@ import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface ApiService {
 
@@ -27,7 +25,7 @@ interface ApiService {
     fun createTask(@Body request: TaskRequestModel): Observable<Any>
 
     @GET("tasks/user")
-    fun getTasks(): Observable<ArrayList<TasksResponse>>
+    fun getUserTasks(): Observable<ArrayList<TasksResponse>>
 
     @GET("tasks/{taskId}/subtasks")
     fun getFullTaskWithSubtasks(@Path("taskId") taskId: Int): Observable<TaskWithSubtasks>

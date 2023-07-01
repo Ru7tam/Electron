@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,21 +11,20 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageView
+import androidx.lifecycle.lifecycleScope
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.FragmentTasksBinding
-import com.example.house_analysis.network.api.RequestRepositoryProvider
-import com.example.house_analysis.network.model.response.TaskWithSubtasks
+import com.example.house_analysis.network.api.builtRequests.BuiltRequestsRepository
 import com.example.house_analysis.network.model.response.TasksResponse
 import com.google.android.material.textfield.TextInputEditText
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
 
 
 class TasksFragment : Fragment() {
     private var _binding : FragmentTasksBinding? = null
     private val binding get() = _binding!!
 
-    private val networkRepository = RequestRepositoryProvider.provideRequestRepository()
+    private val networkRepository = BuiltRequestsRepository()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,45 +41,15 @@ class TasksFragment : Fragment() {
 
         binding.createTask.setOnClickListener {
             showDialog()
-            requestGetTasks()
-            requestGetTaskWithSubtasks(25)
+            lifecycleScope.launch {
+                val tasks = requestGetTasks()
+                //Тут (в теле lifecycleScope) и передавай полученный масив в адаптер ресайклера
+            }
+//            requestGetTaskWithSubtasks(25)
         }
     }
 
-    private fun requestGetTasks(): ArrayList<TasksResponse> {
-        var tasks = arrayListOf<TasksResponse>()
-        networkRepository.getTasks()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                { result ->
-                    result.forEach {
-                        Log.d("Network", it.toString())
-                    }
-
-                    tasks = result
-                }, { error ->
-                    Exception(error).printStackTrace()
-                }
-            )
-        return tasks
-    }
-
-    private fun requestGetTaskWithSubtasks(taskId: Int): TaskWithSubtasks {
-        var response = TaskWithSubtasks(0, "null", 0, emptyList())
-        networkRepository.getFullTaskWithSubtasks(taskId)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                { result ->
-                    Log.d("Network", result.toString())
-                    response = result
-                }, { error ->
-                    Exception(error).printStackTrace()
-                }
-            )
-        return response
-    }
+    private suspend fun requestGetTasks() = networkRepository.getTasks()
 
     private fun showDialog(){
         val dialog = Dialog(requireContext())
@@ -102,26 +70,13 @@ class TasksFragment : Fragment() {
             val from = dialog.findViewById<TextInputEditText>(R.id.text_from).text.toString().toInt()
             val to = dialog.findViewById<TextInputEditText>(R.id.text_to).text.toString().toInt()
 
-            postTaskRequest(address, from, to)
+//            postTaskRequest(address, from, to)
             dialog.dismiss()
         }
 
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
         dialog.show()
-    }
-
-    private fun postTaskRequest(address: String, from: Int, to: Int) {
-        networkRepository.createTask(title = address, from = from, to = to)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                { result ->
-                    Log.d("Network", result.toString())
-                }, { error ->
-                    Exception(error).printStackTrace()
-                }
-            )
     }
 
     override fun onDestroy() {

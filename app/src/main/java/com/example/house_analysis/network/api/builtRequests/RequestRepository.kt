@@ -1,5 +1,6 @@
-package com.example.house_analysis.network.api
+package com.example.house_analysis.network.api.builtRequests
 
+import com.example.house_analysis.network.api.ApiService
 import com.example.house_analysis.network.model.request.LoungeFloorModel
 import com.example.house_analysis.network.model.request.TaskRequestModel
 import com.example.house_analysis.network.model.request.UserLoginData
@@ -8,17 +9,16 @@ import com.example.house_analysis.network.model.response.TaskWithSubtasks
 import com.example.house_analysis.network.model.response.TasksResponse
 import com.example.house_analysis.network.model.response.TokenResponse
 import io.reactivex.Observable
-import retrofit2.Call
 import retrofit2.Response
 
 class RequestRepository(private val apiService: ApiService) {
 
-    fun loginUser(email: String, password: String): Observable<TokenResponse> {
-        return apiService.loginUser(UserLoginData(email, password))
+    fun loginUser(userInfo: UserLoginData): Observable<TokenResponse> {
+        return apiService.loginUser(userInfo)
     }
 
-    fun registerUser(fullName: String, email: String, password: String, gender: String, birthday: String, phone: String): Observable<Response<Unit>> {
-        return apiService.registerUser(UserRegisterData(fullName, email, password, gender, birthday, phone))
+    fun registerUser(userInfo: UserRegisterData): Observable<Response<Unit>> {
+        return apiService.registerUser(userInfo)
     }
 
     fun createTask(title: String, from: Int, to: Int): Observable<Any> {
@@ -26,7 +26,7 @@ class RequestRepository(private val apiService: ApiService) {
     }
 
     fun getTasks(): Observable<ArrayList<TasksResponse>> {
-        return apiService.getTasks()
+        return apiService.getUserTasks()
     }
 
     fun getFullTaskWithSubtasks(taskId: Int): Observable<TaskWithSubtasks> {
