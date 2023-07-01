@@ -13,7 +13,7 @@ import com.example.house_analysis.databinding.ActivityAccountMainBinding
 import com.example.house_analysis.ui.profile.bottom_nav.AddFragment
 import com.example.house_analysis.ui.profile.bottom_nav.BottomSheetDialogFagment
 
-import com.example.house_analysis.ui.profile.bottom_nav.TasksFragment
+import com.example.house_analysis.ui.profile.bottom_nav.TasksHomeFragment
 
 import com.example.house_analysis.ui.profile.bottom_nav.SearchFragment
 import com.example.house_analysis.ui.profile.top_nav.ProfileFragment
@@ -59,7 +59,7 @@ class MainAccountActivity : AppCompatActivity(){
             binding.profileImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorImageView), PorterDuff.Mode.SRC_IN)
 
             // Переход на другой фрагмент
-            val fragment = TasksFragment()
+            val fragment = TasksHomeFragment()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.relativeContainer, fragment)
                 .commit()
@@ -88,7 +88,7 @@ class MainAccountActivity : AppCompatActivity(){
         binding.tasksImageView.setColorFilter(ContextCompat.getColor(this, R.color.colorChangeImage), PorterDuff.Mode.SRC_IN)
         val frameLayout: RelativeLayout = findViewById(R.id.relativeContainer)
 
-        val fragment: Fragment = TasksFragment() // Создаем экземпляр TasksFragment
+        val fragment: Fragment = TasksHomeFragment() // Создаем экземпляр TasksFragment
 
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -100,10 +100,11 @@ class MainAccountActivity : AppCompatActivity(){
     fun bottomNavigation(){
         binding.navBar.setOnItemSelectedListener {
                 when(it.itemId) {
-                    R.id.home ->
-                        openFragment(TasksFragment())
                     R.id.search ->
                         openFragment(SearchFragment())
+                    R.id.home ->
+                        openFragment(TasksHomeFragment())
+
                     R.id.add ->
                         openFragment(AddFragment())
                     R.id.dots ->
@@ -122,7 +123,7 @@ class MainAccountActivity : AppCompatActivity(){
     }
     fun openDefaultFragment(savedInstanceState: Bundle?){
         if (savedInstanceState == null){
-            val defaultFrament = com.example.house_analysis.ui.profile.bottom_nav.TasksFragment()
+            val defaultFrament = com.example.house_analysis.ui.profile.bottom_nav.TasksHomeFragment()
             supportFragmentManager.beginTransaction()
                 .add(R.id.relativeContainer, defaultFrament)
                 .commit()

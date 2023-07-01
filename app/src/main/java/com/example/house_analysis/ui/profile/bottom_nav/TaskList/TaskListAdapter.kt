@@ -7,9 +7,10 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.house_analysis.R
+import com.example.house_analysis.network.model.response.TasksResponse
 import kotlin.math.sign
 
-class TaskListAdapter (private val dataList: List<Tasks>):
+class TaskListAdapter (private val dataList: ArrayList<TasksResponse>):
     RecyclerView.Adapter<TaskListAdapter.ViewHolder>() {
 
 
@@ -20,8 +21,8 @@ class TaskListAdapter (private val dataList: List<Tasks>):
         val appartmentLis = itemView.findViewById<TextView>(R.id.appartmentList)
         val floorList = itemView.findViewById<TextView>(R.id.floorList)
 
-        fun bind(data:Tasks){
-
+        fun bind(tasks:TasksResponse){
+            street.text = tasks.title
         }
     }
 
@@ -35,13 +36,7 @@ class TaskListAdapter (private val dataList: List<Tasks>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = dataList[position]
-        holder.isChecked.isChecked = dataList[position].isChecked
-        holder.street.text = dataList[position].street
-        val appartmentStr = "${dataList[position].apartment[0]}-${dataList[position].apartment[dataList[position].apartment.size - 1]}"
-        holder.appartmentLis.text = appartmentStr
-        val floorStr = "${dataList[position].floors[0]}-${dataList[position].floors.size - 1}"
-        holder.floorList.text = floorStr
-        holder.bind(data)
+        val currentPosition = dataList!![position]
+        holder.bind(currentPosition)
     }
 }
