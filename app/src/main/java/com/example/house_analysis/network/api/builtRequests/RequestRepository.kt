@@ -7,6 +7,7 @@ import com.example.house_analysis.network.model.request.UserRegisterData
 import com.example.house_analysis.network.model.response.TasksResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 
 class RequestRepository {
@@ -14,18 +15,8 @@ class RequestRepository {
     private val networkPostRepo = PostRequestsRepo(networkRepository)
     private val networkGetRepo = GetRequestsRepo(networkRepository)
 
-    suspend fun login(userInfo: UserLoginData): Boolean {
-        return networkPostRepo.login(userInfo)
-    }
-
-    suspend fun register(userInfo: UserRegisterData): Int {
-        return networkPostRepo.registration(userInfo)
-    }
-
-    suspend fun getTasks(): ArrayList<TasksResponse> {
-        return networkGetRepo.getTasks()
-    }
-
-
+    suspend fun login(userInfo: UserLoginData) = networkPostRepo.login(userInfo)
+    suspend fun register(userInfo: UserRegisterData) = networkPostRepo.registration(userInfo)
+    suspend fun getTasks() = networkGetRepo.getTasks()
 
 }
