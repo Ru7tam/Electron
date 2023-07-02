@@ -19,10 +19,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/street"
+                android:id="@+id/taskAddress"
                 android:layout_width="210dp"
                 android:textColor="@color/black"
-                android:text="ул. Красного Октября, 2"
                 android:layout_height="wrap_content"/>
             <LinearLayout
                 android:layout_gravity="center"

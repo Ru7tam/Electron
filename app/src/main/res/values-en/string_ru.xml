@@ -105,5 +105,6 @@
     <string name="copy">Копировать</string>
     <string name="edit">Редактировать</string>
     <string name="configure">Настроить</string>
-    <string name="cansel">Отмена</string>
+    <string name="cancel">Отмена</string>
+    <string name="task_list">Список задач</string>
 </resources>

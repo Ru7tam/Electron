@@ -262,7 +262,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cansel"
+        android:text="@string/cancel"
         android:padding="10dp"
         android:textAllCaps="false"
         android:textColor="@color/main_color"

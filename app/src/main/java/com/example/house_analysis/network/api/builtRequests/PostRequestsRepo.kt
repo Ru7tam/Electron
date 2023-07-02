@@ -2,6 +2,7 @@ package com.example.house_analysis.network.api.builtRequests
 
 import android.util.Log
 import com.example.house_analysis.network.api.Token
+import com.example.house_analysis.network.model.request.TaskRequestModel
 import com.example.house_analysis.network.model.request.UserLoginData
 import com.example.house_analysis.network.model.request.UserRegisterData
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -48,8 +49,8 @@ class PostRequestsRepo(private val networkRepository: RequestProvider) {
         }
     }
 
-    fun createTask(address: String, from: Int, to: Int) {
-        networkRepository.createTask(title = address, from = from, to = to)
+    fun createTask(taskInfo: TaskRequestModel) {
+        networkRepository.createTask(taskInfo)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(

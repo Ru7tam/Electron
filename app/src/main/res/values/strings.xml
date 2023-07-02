@@ -211,5 +211,6 @@
     <string name="copy">Copy</string>
     <string name="edit">Edit</string>
     <string name="configure">Configure</string>
-    <string name="cansel">Canсel</string>
+    <string name="cancel">Canсel</string>
+    <string name="task_list">Task list</string>
 </resources>
