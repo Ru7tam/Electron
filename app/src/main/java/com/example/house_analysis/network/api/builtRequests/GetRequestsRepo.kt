@@ -9,7 +9,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class GetRequestsRepo(private val networkRepository: RequestRepository) {
+class GetRequestsRepo(private val networkRepository: RequestProvider) {
     private val logTag = "Network"
 
     suspend fun getTasks(): ArrayList<TasksResponse> {

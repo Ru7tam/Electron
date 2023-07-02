@@ -10,19 +10,17 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivitySignInBinding
-import com.example.house_analysis.network.api.builtRequests.BuiltRequestsRepository
+import com.example.house_analysis.network.api.builtRequests.RequestRepository
 import com.example.house_analysis.network.model.request.UserLoginData
 import com.example.house_analysis.ui.password.RestorePass
 import com.example.house_analysis.ui.profile.MainAccountActivity
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
 
-    private val networkRepository = BuiltRequestsRepository()
+    private val networkRepository = RequestRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

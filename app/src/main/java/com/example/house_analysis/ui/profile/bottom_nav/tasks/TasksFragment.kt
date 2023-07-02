@@ -14,8 +14,7 @@ import android.widget.ImageView
 import androidx.lifecycle.lifecycleScope
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.FragmentTasksBinding
-import com.example.house_analysis.network.api.builtRequests.BuiltRequestsRepository
-import com.example.house_analysis.network.model.response.TasksResponse
+import com.example.house_analysis.network.api.builtRequests.RequestRepository
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
@@ -24,7 +23,7 @@ class TasksFragment : Fragment() {
     private var _binding : FragmentTasksBinding? = null
     private val binding get() = _binding!!
 
-    private val networkRepository = BuiltRequestsRepository()
+    private val networkRepository = RequestRepository()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +42,7 @@ class TasksFragment : Fragment() {
             showDialog()
             lifecycleScope.launch {
                 val tasks = requestGetTasks()
-                //Тут (в теле lifecycleScope) и передавай полученный масив в адаптер ресайклера
+                //Тут (в теле lifecycleScope) и передавай полученн]ый масив в адаптер ресайклера
             }
 //            requestGetTaskWithSubtasks(25)
         }

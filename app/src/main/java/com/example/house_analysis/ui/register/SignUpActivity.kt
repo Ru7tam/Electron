@@ -5,20 +5,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivitySignUpBinding
-import com.example.house_analysis.network.api.RequestRepositoryProvider
-import com.example.house_analysis.network.api.builtRequests.BuiltRequestsRepository
+import com.example.house_analysis.network.api.builtRequests.RequestRepository
 import com.example.house_analysis.network.model.request.UserRegisterData
 import com.example.house_analysis.ui.additional.SuccessfullyRegisteredActivity
 import com.google.android.material.textfield.TextInputLayout
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -26,7 +22,7 @@ import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
-    private val networkRepository = BuiltRequestsRepository()
+    private val networkRepository = RequestRepository()
 
     private var selectedYear = 0
     private var selectedMonth = 0

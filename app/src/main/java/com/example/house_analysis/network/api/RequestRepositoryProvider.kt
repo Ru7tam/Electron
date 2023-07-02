@@ -1,10 +1,10 @@
 package com.example.house_analysis.network.api
 
-import com.example.house_analysis.network.api.builtRequests.RequestRepository
+import com.example.house_analysis.network.api.builtRequests.RequestProvider
 
 object RequestRepositoryProvider {
-    fun provideRequestRepository(): RequestRepository {
-        return RequestRepository(ApiService.create())
+    fun provideRequestRepository(): RequestProvider {
+        return RequestProvider(ApiService.create())
     }
 
 }

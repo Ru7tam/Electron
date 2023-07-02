@@ -10,7 +10,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class PostRequestsRepo(private val networkRepository: RequestRepository) {
+class PostRequestsRepo(private val networkRepository: RequestProvider) {
     private val logTag = "Network"
 
     suspend fun login(userInfo: UserLoginData): Boolean {
