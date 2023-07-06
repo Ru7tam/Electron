@@ -41,13 +41,15 @@ interface ApiService {
 
 
     companion object Factory {
+        var token = ""
         fun create(): ApiService {
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor { chain ->
                     val originalRequest = chain.request()
                     val newRequest = originalRequest.newBuilder()
                         .header("Accept", "*/*")
-                        .header("Authorization", "Bearer ${Token.getToken()}")
+                        .header("Authorization", "Bearer $token")
+
                         .build()
                     chain.proceed(newRequest)
                 }

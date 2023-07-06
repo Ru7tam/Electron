@@ -1,4 +1,4 @@
-package com.example.house_analysis.network.api.builtRequests
+package com.example.house_analysis.network.api.requests
 
 import android.util.Log
 import com.example.house_analysis.network.model.response.TaskWithSubtasks

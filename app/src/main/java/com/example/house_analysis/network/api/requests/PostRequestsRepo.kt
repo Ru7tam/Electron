@@ -1,7 +1,7 @@
-package com.example.house_analysis.network.api.builtRequests
+package com.example.house_analysis.network.api.requests
 
 import android.util.Log
-import com.example.house_analysis.network.api.Token
+import com.example.house_analysis.network.api.ApiService
 import com.example.house_analysis.network.model.request.TaskRequestModel
 import com.example.house_analysis.network.model.request.UserLoginData
 import com.example.house_analysis.network.model.request.UserRegisterData
@@ -21,7 +21,7 @@ class PostRequestsRepo(private val networkRepository: RequestProvider) {
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     { result ->
-                        Token.setToken(result.token)
+                        ApiService.token = result.token
                         Log.d(logTag, result.toString())
                         continuation.resume(true)
                     }, { error ->

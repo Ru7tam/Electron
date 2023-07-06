@@ -1,4 +1,4 @@
-package com.example.house_analysis.network.api.builtRequests
+package com.example.house_analysis.network.api.requests
 
 import com.example.house_analysis.network.api.ApiService
 import com.example.house_analysis.network.model.request.LoungeFloorModel
