@@ -1,4 +1,4 @@
-package com.example.house_analysis.ui.profile.bottom_nav.tasks.recycler
+package com.example.house_analysis.taskLogic
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

@@ -1,7 +1,8 @@
-package com.example.house_analysis.network.api.requests
+package com.example.house_analysis.network.api.requests.repos
 
 import android.util.Log
 import com.example.house_analysis.network.api.ApiService
+import com.example.house_analysis.network.api.requests.RequestProvider
 import com.example.house_analysis.network.model.request.TaskRequestModel
 import com.example.house_analysis.network.model.request.UserLoginData
 import com.example.house_analysis.network.model.request.UserRegisterData
@@ -39,7 +40,7 @@ class PostRequestsRepo(private val networkRepository: RequestProvider) {
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     { result ->
-                        Log.d("Network", result.toString())
+                        Log.d(logTag, result.toString())
                         continuation.resume(result.code())
                     }, { error ->
                         Log.d(logTag, error.stackTraceToString())
@@ -49,16 +50,20 @@ class PostRequestsRepo(private val networkRepository: RequestProvider) {
         }
     }
 
-    fun createTask(taskInfo: TaskRequestModel) {
-        networkRepository.createTask(taskInfo)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                { result ->
-                    Log.d(logTag, result.toString())
-                }, { error ->
-                    Exception(error).printStackTrace()
-                }
-            )
+    suspend fun createTask(taskInfo: TaskRequestModel): Int {
+        return suspendCoroutine { continuation ->
+            networkRepository.createTask(taskInfo)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    { result ->
+                        Log.d(logTag, result.toString())
+                        continuation.resume(result.taskId)
+                    }, { error ->
+                        Log.d(logTag, error.stackTraceToString())
+                        continuation.resumeWithException(error)
+                    }
+                )
+        }
     }
 }

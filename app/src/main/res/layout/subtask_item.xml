@@ -65,7 +65,7 @@
 
             <CheckBox
                 android:layout_weight="1"
-                android:id="@+id/isCheck2"
+                android:id="@+id/isCheck1"
                 android:buttonTint="@color/main_color"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>

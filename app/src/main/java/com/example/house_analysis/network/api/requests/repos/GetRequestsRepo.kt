@@ -1,6 +1,7 @@
-package com.example.house_analysis.network.api.requests
+package com.example.house_analysis.network.api.requests.repos
 
 import android.util.Log
+import com.example.house_analysis.network.api.requests.RequestProvider
 import com.example.house_analysis.network.model.response.TaskWithSubtasks
 import com.example.house_analysis.network.model.response.TasksResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,6 +23,23 @@ class GetRequestsRepo(private val networkRepository: RequestProvider) {
                         result.forEach {
                             Log.d(logTag, it.toString())
                         }
+                        continuation.resume(result)
+                    }, { error ->
+                        Log.d(logTag, error.stackTraceToString())
+                        continuation.resumeWithException(error)
+                    }
+                )
+        }
+    }
+
+    suspend fun getTask(taskId: Int): TasksResponse {
+        return suspendCoroutine { continuation ->
+            networkRepository.getTask(taskId)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    { result ->
+                        Log.d(logTag, result.toString())
                         continuation.resume(result)
                     }, { error ->
                         Log.d(logTag, error.stackTraceToString())

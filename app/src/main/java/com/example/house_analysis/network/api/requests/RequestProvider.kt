@@ -21,12 +21,20 @@ class RequestProvider(private val apiService: ApiService) {
         return apiService.registerUser(userInfo)
     }
 
-    fun createTask(taskInfo: TaskRequestModel): Observable<Any> {
+    fun createTask(taskInfo: TaskRequestModel): Observable<TasksResponse> {
         return apiService.createTask(taskInfo)
+    }
+
+    fun deleteTask(taskId: Int) {
+        return apiService.deleteTask(taskId)
     }
 
     fun getTasks(): Observable<ArrayList<TasksResponse>> {
         return apiService.getUserTasks()
+    }
+
+    fun getTask(taskId: Int): Observable<TasksResponse> {
+        return apiService.getTask(taskId)
     }
 
     fun getFullTaskWithSubtasks(taskId: Int): Observable<TaskWithSubtasks> {
