@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_gravity="center_horizontal"
+    app:cardCornerRadius="40dp"
+    android:id="@+id/dialog"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="380dp"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="horizontal"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/dialog_label"
+
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center_horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="220dp"
+            android:text="Создание нового адреса"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/closeDialog"
+                android:layout_width="match_parent"
+                android:src="@drawable/cancel"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/adress"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Введите адрес"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:boxCornerRadiusTopStart="@dimen/cornerRaduisInput"
+                app:boxCornerRadiusBottomEnd="@dimen/cornerRaduisInput"
+                app:boxCornerRadiusBottomStart="@dimen/cornerRaduisInput"
+                app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
+                android:layout_marginTop="10dp"
+                app:endIconDrawable="@drawable/cancel"
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Адрес"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/appartment"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Введите количество квартир"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    app:boxCornerRadiusTopStart="@dimen/cornerRaduisInput"
+                    app:boxCornerRadiusBottomEnd="@dimen/cornerRaduisInput"
+                    app:boxCornerRadiusBottomStart="@dimen/cornerRaduisInput"
+                    app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
+                    android:layout_marginTop="10dp"
+                    app:endIconDrawable="@drawable/cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="От"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_from"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_weight="1"
+                    app:boxCornerRadiusTopStart="@dimen/cornerRaduisInput"
+                    app:boxCornerRadiusBottomEnd="@dimen/cornerRaduisInput"
+                    app:boxCornerRadiusBottomStart="@dimen/cornerRaduisInput"
+                    app:boxCornerRadiusTopEnd="@dimen/cornerRaduisInput"
+                    android:layout_marginTop="10dp"
+                    app:endIconDrawable="@drawable/cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="До"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_to"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/createTask"
+            style="@style/buttonSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:inputType="textCapCharacters"
+            android:text="Создать"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appartment" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>

@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.house_analysis"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -37,8 +37,22 @@ android {
 
 dependencies {
     def ev_version = "1.0.4"
-    implementation "com.wajahatkarim:easyvalidation-core:$ev_version"
+    def retrofit_version = "2.9.0"
 
+    implementation "com.wajahatkarim:easyvalidation-core:$ev_version"
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0'
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    //Default
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
