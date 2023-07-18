@@ -1,42 +1,38 @@
 package com.example.house_analysis.ui.register
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.lifecycleScope
 import com.example.house_analysis.R
 import com.example.house_analysis.databinding.ActivitySignUpBinding
-import com.example.house_analysis.network.api.requests.RequestRepository
-import com.example.house_analysis.network.model.request.UserRegisterData
+import com.example.house_analysis.ui.SignInActivity
 import com.example.house_analysis.ui.additional.SuccessfullyRegisteredActivity
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.coroutines.launch
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
-    private val networkRepository = RequestRepository()
-
     private var selectedYear = 0
     private var selectedMonth = 0
     private var selectedDayOfMonth = 0
 
-//    All Inputs:
+    //    All Inputs:
     private lateinit var name: TextInputLayout
     private lateinit var lastname: TextInputLayout
     private lateinit var dateBirth: TextView
+
     private lateinit var gender: AutoCompleteTextView
+    private lateinit var genderText: TextInputLayout
+
     private lateinit var phone: TextInputLayout
     private lateinit var email: TextInputLayout
     private lateinit var password: TextInputLayout
     private lateinit var confirmPassword: TextInputLayout
+
     private lateinit var iHave18: CheckBox
     private lateinit var policy: CheckBox
 
@@ -61,66 +57,47 @@ class SignUpActivity : AppCompatActivity() {
         datePicker()
         initFields()
         passwordsValidation()
-        errorOccurredInEmail()
-        forTextSignIn()
+        errorOccuredInEmail()
+        fortextSignIn()
+        forButtonSignUp()
 
+        validationFields(
+            name,
+            lastname,
+            gender,
+            dateBirth,
+            phone,
+            email,
+            password,
+            confirmPassword,
+            iHave18,
+            policy
+        )
 
-        validationFields(name, lastname, gender, dateBirth, phone, email, password, confirmPassword, iHave18, policy)
     }
 
-    private fun registrationRequest() {
-        val fullName = name.editText?.text.toString() + " " + lastname.editText?.text.toString()
-        val email = email.editText?.text.toString()
-        val password = confirmPassword.editText?.text.toString()
-        val gender = if(gender.text.toString() == "Мужской") "MALE" else "FEMALE" //TODO (HARDCODED)
-        val birthday = formatDate(dateBirth.text)
-        val phone = phone.editText?.text.toString()
-
-        lifecycleScope.launch {
-            val responseCode = networkRepository.register(
-                UserRegisterData(
-                    fullName,
-                    email,
-                    password,
-                    gender,
-                    birthday,
-                    phone
-                )
-            )
-            when (responseCode) {
-                200 -> {
-                    startActivity(Intent(applicationContext, SuccessfullyRegisteredActivity::class.java))
-                    finish()
-                }
-                else -> applicationContext.toast("Что-то пошло не так, повторите попытку через несколько минут")
-            }
-        }
-    }
-
-    private fun formatDate(date: CharSequence): String {
-        val formatter = DateTimeFormatter.ofPattern("d/M/yyyy")
-        return LocalDate.parse(date, formatter).toString()
-    }
-
-    private fun Context.toast(message: CharSequence) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
-
-    private fun onBackBtnPressed(){
+    fun onBackBtnPressed() {
         binding.backButton.setOnClickListener {
             finish()
         }
     }
 
-    private fun forTextSignIn(){
-        binding.textSignIn.setOnClickListener{
+    fun forButtonSignUp() {
+        binding.buttonSignUp.setOnClickListener {
+            val intent = Intent(this, SuccessfullyRegisteredActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    fun fortextSignIn() {
+        binding.textSignIn.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
 
-    private fun datePicker() {
+    fun datePicker() {
 
         val defaultDate = Calendar.getInstance()
         selectedYear = defaultDate.get(Calendar.YEAR)
@@ -149,8 +126,10 @@ class SignUpActivity : AppCompatActivity() {
 
             datePicker.show()
             datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE).text = "Choose"
-            datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.main_color))
-            datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.grey))
+            datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE)
+                .setTextColor(resources.getColor(R.color.main_color))
+            datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE)
+                .setTextColor(resources.getColor(R.color.grey))
             datePicker.setCancelable(false)
 
         }
@@ -158,39 +137,24 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    private fun passwordsValidation(){
+    fun passwordsValidation() {
         var password1 = binding.password
         var password2 = binding.confirmPassword
 
-        fun hasWhitespace(text: CharSequence?) : Boolean{
-            var ifWhitespace : Boolean = text.toString().any { it.isWhitespace() }
-            return ifWhitespace
-        }
-
+        val LATIN_STRING: String = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
         password1.editText?.doOnTextChanged { text, start, before, count ->
-            var hasNoRussianLetter : Boolean = !text.toString().lowercase().any{ it in 'а' .. 'я'}
-            if (text?.length!! > 7 && text.isNotEmpty() && hasNoRussianLetter) {
-                if (hasWhitespace(text)){
-                    password1.error = "Без пробелов"
-                    arePasswordsEqual = false
-                }
-                else {
-                    password1.error = null
-                    password1.helperText = "Пароль валидный"
-                    arePasswordsEqual = true
-                }
-
+            if (text?.length!! > 7 && text.isNotEmpty()) {
+                password1.helperText = "Пароль валидный"
             } else {
                 binding.password.error = resources.getString(R.string.errorOccured)
             }
-            if (text.toString() == password2.editText?.text.toString() && text.toString().isNotEmpty()){
+            if (text.toString() == password2.editText?.text.toString()) {
                 arePasswordsEqual = true
                 password1.startIconDrawable =
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
                 password2.startIconDrawable =
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
-            }
-            else {
+            } else {
                 password1.startIconDrawable = null
                 password2.startIconDrawable = null
                 arePasswordsEqual = false
@@ -200,26 +164,26 @@ class SignUpActivity : AppCompatActivity() {
 
         }
         password2.editText?.doOnTextChanged { text, start, before, count ->
-            if (text?.length!! > 7 && text.toString() == password1.editText?.text.toString() && password1.editText?.text.toString().isNotEmpty()) {
+            if (text.toString() == password1.editText?.text.toString()) {
                 arePasswordsEqual = true
-                password2.helperText = "Пароли совподают"
+                password2.helperText = "Пароли совпадают"
                 password1.helperText = null
                 password1.startIconDrawable =
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
                 password2.startIconDrawable =
                     resources.getDrawable(R.drawable.baseline_check_circle_24)
                 password2.error = null
-
             } else {
                 arePasswordsEqual = false
-                password2.error = "Пароли не совподают"
+                password2.error = "Пароли не совпадают"
                 password1.startIconDrawable = null
                 password2.startIconDrawable = null
             }
 
         }
     }
-    private fun initFields(){
+
+    fun initFields() {
         binding.apply {
             this@SignUpActivity.name = name
             this@SignUpActivity.lastname = lastname
@@ -235,21 +199,23 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun validationFields(vararg fields: View) {
+    fun validationFields(vararg fields: View) {
         fields.forEach { field ->
-            when(field) {
+            when (field) {
                 is TextInputLayout -> {
                     textInputLayouts.add(field)
                     field.editText?.doOnTextChanged { text, start, before, count -> updateSignUpButtonState() }
 //
                 }
+
                 is CheckBox -> {
                     field.setOnCheckedChangeListener { _, _ ->
                         updateSignUpButtonState()
                     }
                 }
-                is AutoCompleteTextView-> {
-                    field.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+                is AutoCompleteTextView -> {
+                    field.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                         override fun onItemSelected(
                             parent: AdapterView<*>?,
                             view: View?,
@@ -258,13 +224,15 @@ class SignUpActivity : AppCompatActivity() {
                         ) {
                             updateSignUpButtonState()
                         }
+
                         override fun onNothingSelected(parent: AdapterView<*>?) {
 //                            updateSignUpButtonState()
                         }
 
                     }
-                    field.doOnTextChanged { text, start, before, count ->  updateSignUpButtonState() }
+                    field.doOnTextChanged { text, start, before, count -> updateSignUpButtonState() }
                 }
+
                 is TextView -> {
                     field.doOnTextChanged { text, start, before, count ->
                         updateSignUpButtonState()
@@ -275,15 +243,15 @@ class SignUpActivity : AppCompatActivity() {
         }
         updateSignUpButtonState()
     }
+
     private fun updateSignUpButtonState() {
         isFieldsValid = areAllFieldsValid()
 
         binding.buttonSignUp.isEnabled = isFieldsValid
-
-        signUpBtn.setOnClickListener{
+        signUpBtn.setOnClickListener {
             if (isFieldsValid) {
-                registrationRequest()
-            } else applicationContext.toast("Проверьте поля и исправьте ошибки")
+                startActivity(Intent(this, SuccessfullyRegisteredActivity::class.java))
+            } else null
         }
     }
 
@@ -298,20 +266,18 @@ class SignUpActivity : AppCompatActivity() {
         return isMailValid && arePasswordsEqual && isTextInputLayoutsValid && isCheckBoxesValid && isAutoCompleteTextViewValid && isTextViewValid
     }
 
-    private fun errorOccurredInEmail(){
+    fun errorOccuredInEmail() {
         email.editText?.doOnTextChanged { inputText, _, _, _ ->
             // Respond to input text change
-            if (!inputText.isNullOrEmpty()) {
-                if ("@" !in inputText){
+            if (inputText != null && inputText.isNotEmpty()) {
+                if ("@" !in inputText) {
                     email.error = "Неверный формат почты"
                     isMailValid = false
-                }
-                else {
+                } else if ("@" in inputText) {
                     email.isErrorEnabled = false
                     isMailValid = true
                 }
-            }
-            else {
+            } else {
                 email.isErrorEnabled = false
             }
         }
