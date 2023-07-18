@@ -72,9 +72,12 @@
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/main_color"
         android:fontFamily="@font/sfprodisplaybold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="@string/readyText"
         android:textAllCaps="false"
-        android:textSize="17sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextMail" />

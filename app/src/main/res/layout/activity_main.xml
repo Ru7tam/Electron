@@ -54,9 +54,8 @@
         android:backgroundTint="@color/main_color"
         android:padding="13dp"
         android:text="@string/signUp"
-        android:textSize="17sp"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@id/buttonSignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -71,7 +70,6 @@
         android:layout_marginBottom="60dp"
         android:padding="13dp"
         android:text="@string/signIn"
-        android:textAllCaps="false"
         android:textColor="@color/main_color"
         android:textSize="17sp"
         android:textStyle="bold"
